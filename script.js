@@ -7,9 +7,6 @@ versionE.textContent = `Version: ${VERSION}`;
 const devOptions = document.getElementById('devOptions');
 const devSpeedDrop = document.getElementById('devSpeedDrop');
 const devPreservePitch = document.getElementById('devPreservePitch');
-const devEvalInput = document.getElementById('devEvalInput');
-const devEvalOutput = document.getElementById('devEvalOutput');
-const devEvalRun = document.getElementById('devEvalRun');
 
 let developerPresses = 0;
 let developerRefresh;
@@ -51,22 +48,6 @@ devPreservePitch.addEventListener('change', (event) => {
   Object.values(audios).forEach((audio) => {
     audio.preservesPitch = event.target.checked;
   });
-});
-
-devEvalInput.addEventListener('keypress', (event) => {
-  const val = devEvalInput.value;
-
-  if (event.key === 'Enter') {
-    devEvalInput.value = '';
-    eval(val);
-  }
-});
-
-devEvalRun.addEventListener('click', () => {
-  const val = devEvalInput.value;
-
-  devEvalInput.value = '';
-  eval(val);
 });
 
 let audios = {};
