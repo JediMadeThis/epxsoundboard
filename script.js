@@ -1,5 +1,21 @@
+// CHECK PASSCODE/LOCK
+let redirectedFromPasscode = sessionStorage.getItem('redirectedFromPasscode');
+
+// If not redirected from passcode.html, redirect to passcode.html
+if (!redirectedFromPasscode) {
+  window.location.href = './passcode/index.html';
+}
+
+// Clear the flag in sessionStorage (optional)
+sessionStorage.removeItem('redirectedFromPasscode');
+
+const lockBtn = document.getElementById('lock');
+
+let lockPresses = 0;
+let lockRefresh;
+
 // DO NOT TOUCH
-const VERSION = 0.21;
+const VERSION = '0.2.1';
 
 const versionE = document.getElementById('version');
 versionE.textContent = `Version: ${VERSION}`;
@@ -67,25 +83,60 @@ function check(event) {
 
   if (btnId === 'stopAudio') {
     return stopAllSounds();
-  } else if (btnId === 'versionBtn') {
+  } else if (btnId === 'lock') {
+    lockRefresh = setTimeout(() => {
+      lockPresses = 0;
+      clearTimeout(lockRefresh);
+    }, 3000);
+
+    if (lockPresses < 5) {
+      lockPresses++;
+    }
+
+    if (lockPresses >= 5) {
+      clearTimeout(lockRefresh);
+
+      lockPresses = 0;
+      sessionStorage.removeItem('redirectedFromPasscode');
+      stopAllSounds();
+
+      window.location.href = './passcode/index.html';
+    }
   } else {
     playSound(audios[btnId]);
   }
 }
 
 function playSound(audio) {
+  audio.volume = 1;
+
   if (typeof audio === 'string') {
-    return document.getElementById(audio).play();
+    document.getElementById(audio).play();
+    return;
   } else {
     audio.play();
   }
 }
 
+let fade;
+
 function stopAllSounds() {
   Object.values(audios).forEach((audio) => {
     audio.pause();
     audio.currentTime = 0;
+    console.log(`${audio} stopped`);
   });
+}
+
+function fadeAudio(audio) {
+  if (audio.volume > 0) {
+    audio.volume -= Math.min(audio.volume, 0.2);
+    fade = setTimeout(fadeAudio, 200);
+  } else {
+    audio.pause();
+    audio.currentTime = 0;
+    console.log(`${audio} stopped`);
+  }
 }
 
 function setPlaybackSpeed(speed) {
@@ -93,5 +144,3 @@ function setPlaybackSpeed(speed) {
     audio.playbackRate = speed;
   });
 }
-
-// TODO: fade track on stop

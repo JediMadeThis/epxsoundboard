@@ -1,0 +1,64 @@
+* {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+*:not(body, html, .versionWrapper) {
+  animation-name: defaultAnim;
+  animation-duration: 0.5s;
+  color: white;
+}
+
+body {
+  background-color: #222;
+  overflow: hidden;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pass {
+  background-color: transparent;
+  border: none;
+  border-bottom: 3px solid #333;
+  font-size: 48px;
+  width: 240px;
+  transition: 0.2s;
+  text-align: center;
+}
+
+.pass:hover {
+  border-bottom: 3px solid #ffffff50;
+}
+
+.pass:focus {
+  outline: none;
+  border-bottom: 3px solid #22e;
+}
+
+.pass::-webkit-outer-spin-button,
+.pass::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+.pass {
+  margin-left: 50px;
+}
+
+@keyframes defaultAnim {
+  0% {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
