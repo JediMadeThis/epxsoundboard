@@ -23,9 +23,10 @@
     <audio id="s14" src="./sounds/Scene 8,12 (Clock Ticking SFX).m4a"></audio>
     <audio id="s15" src="./sounds/Scene 12 (Wedding March).m4a"></audio>
 
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./versionloader/style.css" />
   </head>
-  <body>
+  <body hidden>
     <div class="versionWrapper">
       <p id="version" class="version">Version: Loading...</p>
     </div>
@@ -75,12 +76,14 @@
         <button id="s14" class="s14 sfx">Clock Ticking</button>
         <button id="s15" class="s15 song">Wedding March</button>
       </div>
-      <button class="red stopAudio" id="stopAudio" style="text-align: center">
-        Stop
-      </button>
-      <button class="red lock" id="lock" style="text-align: center">
-        Lock
-      </button>
+      <div class="controls">
+        <button class="red stopAudio" id="stopAudio" style="text-align: center">
+          Stop
+        </button>
+        <button class="red lock" id="lock" style="text-align: center">
+          Lock
+        </button>
+      </div>
     </div>
 
     <div class="devOptions" id="devOptions" hidden>
@@ -108,5 +111,6 @@
     </div>
 
     <script src="./script.js"></script>
+    <script src="./versionloader/loader.js"></script>
   </body>
 </html>

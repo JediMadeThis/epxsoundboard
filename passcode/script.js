@@ -22,7 +22,7 @@ pass.addEventListener('input', async (event) => {
     if (pass.value === String(PASSCODE)) {
       e.value = '';
       e.disabled = true;
-      
+
       sessionStorage.setItem('redirectedFromPasscode', 'true');
       location.href = '../index.html';
     } else {
@@ -30,6 +30,15 @@ pass.addEventListener('input', async (event) => {
       e.value = '';
     }
   }
+});
+
+// Animation
+const allElements = document.body.querySelectorAll(':not(div, audio, link)');
+const ANIMATION_DELAY = 0.1;
+
+allElements.forEach((element, i) => {
+  let delay = (i + 1) * ANIMATION_DELAY;
+  element.style.animationDelay = `${delay}s`;
 });
 
 async function wait(ms) {

@@ -7,7 +7,8 @@ Update/edit history of this project.
 [Update 0.1](#update-01)<br>
 [Update 0.2](#update-02)<br>
 [Update 0.2.1](#update-021)<br>
-[Update 1.0](#update-10-official-release!)
+[Update 1.0](#update-10-official-release!)<br>
+[Update 1.0.1](#update-101)
 
 ## Update 0.1
 
@@ -35,3 +36,7 @@ Update/edit history of this project.
 - Added a passcode page to prevent anyone else from using the soundboard.
   - Redirects back to enter the passcode if not entered correctly.
   - Added a lock button in the soundboard page.
+
+## Update 1.0.1
+
+- Added a smooth slide up animation on every element.

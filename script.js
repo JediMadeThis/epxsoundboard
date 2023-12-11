@@ -6,6 +6,18 @@ if (!redirectedFromPasscode) {
   window.location.href = './passcode/index.html';
 }
 
+let isLoaded = false;
+document.addEventListener('DOMContentLoaded', () => {
+  isLoaded = true;
+});
+
+let loadInterval = setInterval(() => {
+  if (isLoaded && redirectedFromPasscode) {
+    clearInterval(loadInterval);
+    document.body.hidden = false;
+  }
+});
+
 // Clear the flag in sessionStorage (optional)
 sessionStorage.removeItem('redirectedFromPasscode');
 
@@ -13,12 +25,6 @@ const lockBtn = document.getElementById('lock');
 
 let lockPresses = 0;
 let lockRefresh;
-
-// DO NOT TOUCH
-const VERSION = '0.2.1';
-
-const versionE = document.getElementById('version');
-versionE.textContent = `Version: ${VERSION}`;
 
 const devOptions = document.getElementById('devOptions');
 const devSpeedDrop = document.getElementById('devSpeedDrop');
@@ -28,7 +34,7 @@ let developerPresses = 0;
 let developerRefresh;
 let isDeveloper = false;
 
-versionE.addEventListener('click', () => {
+document.getElementById('version').addEventListener('click', () => {
   if (isDeveloper) return;
 
   if (developerPresses < 1) {
@@ -106,6 +112,16 @@ function check(event) {
     playSound(audios[btnId]);
   }
 }
+
+// Animation
+const allElements = document.body.querySelectorAll(':not(div, audio, link)');
+const ANIMATION_DELAY = 0.1;
+
+allElements.forEach((element, i) => {
+  console.log(element);
+  let delay = (i + 1) * ANIMATION_DELAY;
+  element.style.animationDelay = `${delay}s`;
+});
 
 function playSound(audio) {
   audio.volume = 1;

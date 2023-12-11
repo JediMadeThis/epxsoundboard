@@ -2,14 +2,18 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-*:not(body, html, .versionWrapper) {
+*:not(body, html, .versionWrapper *, audio, div, link) {
   animation-name: defaultAnim;
   animation-duration: 0.5s;
   color: white;
+  animation-fill-mode: both;
+}
+
+html {
+  background-color: #222;
 }
 
 body {
-  background-color: #222;
   overflow: hidden;
   margin: 0;
   height: 100vh;

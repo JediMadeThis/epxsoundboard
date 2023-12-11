@@ -2,10 +2,11 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-*:not(body, html, .versionWrapper) {
+*:not(body, html, .versionWrapper *, audio, div, link) {
   animation-name: defaultAnim;
   animation-duration: 0.5s;
   color: white;
+  animation-fill-mode: both;
 }
 
 .versionWrapper {
@@ -35,22 +36,6 @@
   margin-left: 25px;
   padding: 8px;
   border-radius: 5px;
-}
-
-.devEvalInput {
-  margin-left: 25px;
-  padding: 3px;
-  background-color: #333;
-  border: none;
-  border-radius: 5px;
-  width: 400px;
-}
-
-.devEvalRun {
-  background-color: #333;
-  border: none;
-  border-radius: 5px;
-  padding: 3px 10px;
 }
 
 .soundboard {
@@ -89,7 +74,7 @@ button:not(:disabled):active {
   background-color: #00000000;
 }
 
-body {
+html {
   background-color: #222;
 }
 
@@ -100,6 +85,7 @@ body {
 
 .stopAudio {
   margin: auto;
+  width: 25%;
 }
 
 button.song {
@@ -112,6 +98,11 @@ button.sfx {
 
 .red {
   background-color: red;
+}
+
+.controls {
+  text-align: center;
+  margin: 0 auto;
 }
 
 @keyframes defaultAnim {
