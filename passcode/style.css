@@ -22,7 +22,12 @@ body {
   align-items: center;
 }
 
+.passcode {
+  text-align: center;
+}
+
 .pass {
+  display: inline-block;
   background-color: transparent;
   border: none;
   border-bottom: 3px solid #333;
@@ -49,10 +54,6 @@ body {
 
 h1 {
   text-align: center;
-}
-
-.pass {
-  margin-left: 50px;
 }
 
 @keyframes defaultAnim {

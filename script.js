@@ -72,37 +72,93 @@ devPreservePitch.addEventListener('change', (event) => {
   });
 });
 
+let audioNames = {};
 let audios = {};
+let audiosIdS = {};
+let audiosIdA = {};
 
 document.querySelectorAll('audio').forEach((audio, i) => {
   audios[`s${i + 1}`] = document.getElementById(audio.id);
-});
 
-console.log(audios);
+  audiosIdS[`s${i + 1}`] = audio.id;
+  audiosIdA[`a${i + 1}`] = `s${i + 1}`;
+});
 
 document.querySelectorAll('button').forEach((btn) => {
   btn.addEventListener('click', check);
+  btn.addEventListener('click', checkHoverEnter);
+  btn.addEventListener('mouseover', checkHoverEnter);
+  btn.addEventListener('mouseleave', checkHoverLeave);
+
+  if (btn.id.startsWith('s')) {
+    audioNames[btn.getAttribute('id')] = btn.textContent;
+  }
 });
 
+let overInterval;
+let leaveInterval;
+
+function checkHoverEnter(event) {
+  clearInterval(overInterval);
+
+  const btn = event.target;
+  const btnId = btn.getAttribute('id');
+
+  if (btnId === 'stopAudio' || btnId === 'lock') return;
+  if (audios[btnId].paused) return;
+
+  overInterval = setInterval(() => {
+    const time = getTime(btnId);
+
+    btn.textContent = `${audioNames[btnId]} (${formatSeconds(
+      time.currentTime
+    )}/${formatSeconds(time.duration)})`;
+  }, 2);
+}
+
+function checkHoverLeave(event) {
+  const btn = event.target;
+  const btnId = btn.getAttribute('id');
+
+  if (btnId === 'stopAudio' || btnId === 'lock') return;
+
+  clearInterval(overInterval);
+
+  btn.textContent = audioNames[btnId];
+}
+
+function getTime(btnId) {
+  let currentTime = audios[btnId].currentTime;
+  let duration = audios[btnId].duration;
+
+  return { currentTime, duration };
+}
+
 function check(event) {
-  const btnId = event.target.id;
+  const btnId = event.target.getAttribute('id');
 
   if (btnId === 'stopAudio') {
     return stopAllSounds();
   } else if (btnId === 'lock') {
+    clearTimeout(lockRefresh);
     lockRefresh = setTimeout(() => {
       lockPresses = 0;
+      lockBtn.textContent = 'Lock';
+
       clearTimeout(lockRefresh);
     }, 3000);
 
     if (lockPresses < 5) {
       lockPresses++;
+      lockBtn.textContent = `Lock (${5 - lockPresses})`;
     }
 
     if (lockPresses >= 5) {
       clearTimeout(lockRefresh);
 
       lockPresses = 0;
+      lockBtn.textContent = 'Lock';
+
       sessionStorage.removeItem('redirectedFromPasscode');
       stopAllSounds();
 
@@ -112,6 +168,55 @@ function check(event) {
     playSound(audios[btnId]);
   }
 }
+
+let opacity = 0;
+let increment = 1;
+let max = 99;
+
+setInterval(() => {
+  Object.values(audiosIdS).forEach((audioId) => {
+    const audio = document.getElementById(audioId);
+    const btn = document.getElementById(audiosIdA[audioId]);
+
+    if (audio.paused) {
+      btn.textContent = audioNames[btn.getAttribute('id')];
+
+      if (btn.classList.contains('sfx')) {
+        btn.style.backgroundColor = '#000099';
+      }
+
+      if (btn.classList.contains('song')) {
+        btn.style.backgroundColor = '#007700';
+      }
+    }
+
+    if (!audio.paused) {
+      if (btn.classList.contains('sfx')) {
+        btn.style.backgroundColor = `#000099${
+          opacity < 10 ? '0' : ''
+        }${opacity}`;
+      }
+
+      if (btn.classList.contains('song')) {
+        btn.style.backgroundColor = `#007700${
+          opacity < 10 ? '0' : ''
+        }${opacity}`;
+      }
+    }
+  });
+});
+
+function bounceNumber() {
+  if (opacity <= max && opacity + increment > max) {
+    increment = -1;
+  } else if (opacity >= 0 && opacity + increment < 0) {
+    increment = 1;
+  }
+
+  opacity += increment;
+}
+
+setInterval(bounceNumber, 10);
 
 // Animation
 const allElements = document.body.querySelectorAll(':not(div, audio, link)');
@@ -158,4 +263,11 @@ function setPlaybackSpeed(speed) {
   Object.values(audios).forEach((audio) => {
     audio.playbackRate = speed;
   });
+}
+
+function formatSeconds(s) {
+  let mins = Math.floor(s / 60);
+  let secs = s % 60;
+
+  return `${mins}:${secs.toFixed(0) < 10 ? '0' : ''}${secs.toFixed(0)}`;
 }

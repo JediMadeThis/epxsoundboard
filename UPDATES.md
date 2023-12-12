@@ -8,7 +8,8 @@ Update/edit history of this project.
 [Update 0.2](#update-02)<br>
 [Update 0.2.1](#update-021)<br>
 [Update 1.0](#update-10-official-release!)<br>
-[Update 1.1](#update-11)
+[Update 1.1](#update-11)><br>
+[Update 1.2](#update-12)
 
 ## Update 0.1
 
@@ -27,12 +28,12 @@ Update/edit history of this project.
 
 ## Update 0.2.1
 
-- Added current version text
-- Added developer options
+- Added current version text.
+- Added developer options.
 
 ## Update 1.0 (Official Release!)
 
-- Bug fixes
+- Bug fixes.
 - Added a passcode page to prevent anyone else from using the soundboard.
   - Redirects back to enter the passcode if not entered correctly.
   - Added a lock button in the soundboard page.
@@ -47,3 +48,12 @@ Update/edit history of this project.
   - Expanded stop button width to prevent misclicks.
 - Added a separated version loader folder.
 - Reveals the actual soundboard when everything is loaded and also entered the passcode successfully.
+
+## Update 1.2
+
+- Bug fixes.
+- Adjusted the h2 `margin-left` position.
+- Added a counter of presses away from locking.
+- Added button animation when audio is playing.
+  - Added button flashing effect when audio is playing
+  - Added audio duration text when button is hovered.
