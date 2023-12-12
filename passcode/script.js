@@ -37,7 +37,7 @@ const allElements = document.body.querySelectorAll(':not(div, audio, link)');
 const ANIMATION_DELAY = 0.1;
 
 allElements.forEach((element, i) => {
-  let delay = (i + 1) * ANIMATION_DELAY;
+  let delay = i * ANIMATION_DELAY;
   element.style.animationDelay = `${delay}s`;
 });
 

@@ -8,7 +8,7 @@ Update/edit history of this project.
 [Update 0.2](#update-02)<br>
 [Update 0.2.1](#update-021)<br>
 [Update 1.0](#update-10-official-release!)<br>
-[Update 1.0.1](#update-101)
+[Update 1.1](#update-11)
 
 ## Update 0.1
 
@@ -40,3 +40,10 @@ Update/edit history of this project.
 ## Update 1.0.1
 
 - Added a smooth slide up animation on every element.
+
+## Update 1.1
+
+- Centered lock and stop buttons.
+  - Expanded stop button width to prevent misclicks.
+- Added a separated version loader folder.
+- Reveals the actual soundboard when everything is loaded and also entered the passcode successfully.
