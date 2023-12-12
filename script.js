@@ -18,7 +18,6 @@ let loadInterval = setInterval(() => {
   }
 });
 
-// Clear the flag in sessionStorage (optional)
 sessionStorage.removeItem('redirectedFromPasscode');
 
 const lockBtn = document.getElementById('lock');
@@ -26,6 +25,7 @@ const lockBtn = document.getElementById('lock');
 let lockPresses = 0;
 let lockRefresh;
 
+// Developer options
 const devOptions = document.getElementById('devOptions');
 const devSpeedDrop = document.getElementById('devSpeedDrop');
 const devPreservePitch = document.getElementById('devPreservePitch');
@@ -72,6 +72,7 @@ devPreservePitch.addEventListener('change', (event) => {
   });
 });
 
+// Audio objects
 let audioNames = {};
 let audios = {};
 let audiosIdS = {};
@@ -108,6 +109,7 @@ function checkHoverEnter(event) {
   if (audios[btnId].paused) return;
 
   overInterval = setInterval(() => {
+    if (audios[btnId].paused) return;
     const time = getTime(btnId);
 
     btn.textContent = `${audioNames[btnId]} (${formatSeconds(
@@ -116,6 +118,7 @@ function checkHoverEnter(event) {
   }, 2);
 }
 
+// Checks when cursor leaves button
 function checkHoverLeave(event) {
   const btn = event.target;
   const btnId = btn.getAttribute('id');
@@ -127,6 +130,7 @@ function checkHoverLeave(event) {
   btn.textContent = audioNames[btnId];
 }
 
+// Get current & duration time of audio element
 function getTime(btnId) {
   let currentTime = audios[btnId].currentTime;
   let duration = audios[btnId].duration;
@@ -134,6 +138,7 @@ function getTime(btnId) {
   return { currentTime, duration };
 }
 
+// Detect button click
 function check(event) {
   const btnId = event.target.getAttribute('id');
 
@@ -169,6 +174,7 @@ function check(event) {
   }
 }
 
+// Audio playingg button animation
 let opacity = 0;
 let increment = 1;
 let max = 99;
@@ -218,7 +224,7 @@ function bounceNumber() {
 
 setInterval(bounceNumber, 10);
 
-// Animation
+// Default Animation
 const allElements = document.body.querySelectorAll(':not(div, audio, link)');
 const ANIMATION_DELAY = 0.1;
 
@@ -227,6 +233,7 @@ allElements.forEach((element, i) => {
   element.style.animationDelay = `${delay}s`;
 });
 
+// Other functions
 function playSound(audio) {
   audio.volume = 1;
 
@@ -238,25 +245,12 @@ function playSound(audio) {
   }
 }
 
-let fade;
-
 function stopAllSounds() {
   Object.values(audios).forEach((audio) => {
     audio.pause();
     audio.currentTime = 0;
     console.log(`${audio} stopped`);
   });
-}
-
-function fadeAudio(audio) {
-  if (audio.volume > 0) {
-    audio.volume -= Math.min(audio.volume, 0.2);
-    fade = setTimeout(fadeAudio, 200);
-  } else {
-    audio.pause();
-    audio.currentTime = 0;
-    console.log(`${audio} stopped`);
-  }
 }
 
 function setPlaybackSpeed(speed) {

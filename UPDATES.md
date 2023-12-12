@@ -9,7 +9,8 @@ Update/edit history of this project.
 [Update 0.2.1](#update-021)<br>
 [Update 1.0](#update-10-official-release!)<br>
 [Update 1.1](#update-11)><br>
-[Update 1.2](#update-12)
+[Update 1.2](#update-12)<br>
+[Update 1.2.1](#update-121)
 
 ## Update 0.1
 
@@ -57,3 +58,7 @@ Update/edit history of this project.
 - Added button animation when audio is playing.
   - Added button flashing effect when audio is playing
   - Added audio duration text when button is hovered.
+
+## Update 1.2.1
+
+- Bug fixes.
