@@ -8,7 +8,7 @@ Update/edit history of this project.
 [Update 0.2](#update-02)<br>
 [Update 0.2.1](#update-021)<br>
 [Update 1.0](#update-10-official-release!)<br>
-[Update 1.1](#update-11)><br>
+[Update 1.1](#update-11)<br>
 [Update 1.2](#update-12)<br>
 [Update 1.2.1](#update-121)
 
