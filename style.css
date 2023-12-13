@@ -66,7 +66,7 @@ button {
   font-size: 18px;
 }
 
-button:not(:disabled):not(.versionBtn):hover {
+button:not(:disabled, .versionBtn):hover {
   opacity: 0.8;
 }
 
@@ -96,7 +96,7 @@ button.sfx {
   background-color: #009;
 }
 
-.red {
+button.red {
   background-color: red;
 }
 

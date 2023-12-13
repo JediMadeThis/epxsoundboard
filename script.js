@@ -7,12 +7,39 @@ if (!redirectedFromPasscode) {
 }
 
 let isLoaded = false;
+let audiosLoaded = [];
+let audios = {};
+let audioNames = {};
+let audiosIdS = {};
+let audiosIdA = {};
+
+document.querySelectorAll('audio').forEach((audio, i) => {
+  audios[`s${i + 1}`] = document.getElementById(audio.id);
+  audiosIdS[`s${i + 1}`] = audio.id;
+  audiosIdA[`a${i + 1}`] = `s${i + 1}`;
+});
+
+document.querySelectorAll('audio').forEach((audio) => {
+  audio.addEventListener('loadeddata', async (event) => {
+    console.log(`${event.target.getAttribute('id')} loaded`);
+    audiosLoaded.push(event.target.getAttribute('id'));
+    //audiosIdA[event.target.getAttribute('id')].disabled = false;
+    /*document
+      .getElementById(audiosIdA[event.target.getAttribute('id')])
+      .classList.remove('red');*/
+  });
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   isLoaded = true;
 });
 
 let loadInterval = setInterval(() => {
-  if (isLoaded && redirectedFromPasscode) {
+  if (
+    isLoaded &&
+    audiosLoaded.length === Object.values(audios).length &&
+    redirectedFromPasscode
+  ) {
     clearInterval(loadInterval);
     document.body.hidden = false;
   }
@@ -73,17 +100,6 @@ devPreservePitch.addEventListener('change', (event) => {
 });
 
 // Audio objects
-let audioNames = {};
-let audios = {};
-let audiosIdS = {};
-let audiosIdA = {};
-
-document.querySelectorAll('audio').forEach((audio, i) => {
-  audios[`s${i + 1}`] = document.getElementById(audio.id);
-
-  audiosIdS[`s${i + 1}`] = audio.id;
-  audiosIdA[`a${i + 1}`] = `s${i + 1}`;
-});
 
 document.querySelectorAll('button').forEach((btn) => {
   btn.addEventListener('click', check);
@@ -261,4 +277,14 @@ function setPlaybackSpeed(speed) {
 
 function formatSeconds(s) {
   return new Date(s * 1000).toISOString().slice(14, 19);
+}
+
+function swap(obj) {
+  return Object.fromEntries(
+    Object.entries(obj).map(([key, value]) => [value, key])
+  );
+}
+
+async function wait(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }

@@ -66,3 +66,7 @@ Update/edit history of this project.
 ## Update 1.2.2
 
 - Fixed audio duration text code.
+
+## Update 1.2.3
+
+- Bug fixes.
