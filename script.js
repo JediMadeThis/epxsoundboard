@@ -260,8 +260,5 @@ function setPlaybackSpeed(speed) {
 }
 
 function formatSeconds(s) {
-  let mins = Math.floor(s / 60);
-  let secs = s % 60;
-
-  return `${mins}:${secs.toFixed(0) < 10 ? '0' : ''}${secs.toFixed(0)}`;
+  return new Date(s * 1000).toISOString().slice(14, 19);
 }
