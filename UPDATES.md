@@ -10,7 +10,10 @@ Update/edit history of this project.
 [Update 1.0](#update-10-official-release!)<br>
 [Update 1.1](#update-11)<br>
 [Update 1.2](#update-12)<br>
-[Update 1.2.1](#update-121)
+[Update 1.2.1](#update-121)<br>
+[Update 1.2.2](#update-122)<br>
+[Update 1.2.3][#update-123]<br>
+[Update 1.2.4](#update-124)
 
 ## Update 0.1
 
@@ -70,3 +73,7 @@ Update/edit history of this project.
 ## Update 1.2.3
 
 - Bug fixes.
+
+## Update 1.2.4
+
+- Shows how many audio files are loaded in the title.
