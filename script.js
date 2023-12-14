@@ -34,14 +34,28 @@ document.addEventListener('DOMContentLoaded', () => {
   isLoaded = true;
 });
 
-let loadInterval = setInterval(() => {
+let loadInterval = setInterval(async () => {
+  if (audiosLoaded.length !== Object.entries(audios).length + 1) {
+    const text = `${audiosLoaded.length}/${
+      Object.values(audios).length
+    } Audios Loaded`;
+
+    document.title = text;
+    title.textContent = text;
+  }
+
   if (
     isLoaded &&
-    audiosLoaded.length === Object.values(audios).length &&
+    audiosLoaded.length === Object.entries(audios).length &&
     redirectedFromPasscode
   ) {
-    clearInterval(loadInterval);
     document.body.hidden = false;
+
+    await wait(2000);
+
+    clearInterval(loadInterval);
+    document.title = 'EPX Soundboard';
+    title.textContent = 'EPX Soundboard';
   }
 });
 
