@@ -51,11 +51,11 @@ let loadInterval = setInterval(async () => {
     audiosLoaded.length === Object.entries(audios).length &&
     redirectedFromPasscode
   ) {
+    clearInterval(loadInterval);
     document.body.hidden = false;
 
     await wait(2000);
 
-    clearInterval(loadInterval);
     document.title = 'EPX Soundboard';
     title.textContent = 'EPX Soundboard';
   }
