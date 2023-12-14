@@ -37,6 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
 const title = document.getElementById('title');
 
 let loadInterval = setInterval(async () => {
+  if (isLoaded) document.body.hidden = false;
+  
   if (audiosLoaded.length !== Object.entries(audios).length + 1) {
     const text = `${audiosLoaded.length}/${
       Object.values(audios).length
@@ -52,7 +54,6 @@ let loadInterval = setInterval(async () => {
     redirectedFromPasscode
   ) {
     clearInterval(loadInterval);
-    document.body.hidden = false;
 
     await wait(2000);
 
