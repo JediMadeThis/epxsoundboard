@@ -34,6 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
   isLoaded = true;
 });
 
+const title = document.getElementById('title');
+
 let loadInterval = setInterval(async () => {
   if (audiosLoaded.length !== Object.entries(audios).length + 1) {
     const text = `${audiosLoaded.length}/${
