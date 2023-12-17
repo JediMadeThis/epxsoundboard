@@ -38,8 +38,11 @@ const title = document.getElementById('title');
 
 let loadInterval = setInterval(async () => {
   if (isLoaded) document.body.hidden = false;
-  
-  if (audiosLoaded.length !== Object.entries(audios).length + 1) {
+
+  if (
+    window.navigator.onLine &&
+    audiosLoaded.length !== Object.entries(audios).length + 1
+  ) {
     const text = `${audiosLoaded.length}/${
       Object.values(audios).length
     } Audios Loaded`;
@@ -193,6 +196,7 @@ function check(event) {
 
     if (lockPresses >= 5) {
       clearTimeout(lockRefresh);
+      lockBtn.disabled = true;
 
       lockPresses = 0;
       lockBtn.textContent = 'Lock';

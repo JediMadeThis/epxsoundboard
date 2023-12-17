@@ -77,3 +77,8 @@ Update/edit history of this project.
 ## Update 1.2.4
 
 - Shows how many audio files are loaded in the title.
+
+## Update 1.3
+
+- Trimmed the audio files.
+- Bug fixes.
