@@ -1,5 +1,5 @@
 // DO NOT TOUCH
-const VERSION = '1.3';
+const VERSION = '2.0';
 
 const versionE = document.getElementById('version');
 versionE.textContent = `Version: ${VERSION}`;

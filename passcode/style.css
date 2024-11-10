@@ -1,7 +1,3 @@
-* {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
 *:not(body, html, .versionWrapper *, audio, div, link) {
   animation-name: defaultAnim;
   animation-duration: 0.5s;
@@ -9,21 +5,42 @@
   animation-fill-mode: both;
 }
 
-html {
+body {
   background-color: #222;
 }
 
+html,
 body {
-  overflow: hidden;
   margin: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100%;
+}
+
+h1 {
+  text-align: center;
+}
+
+.versionWrapper {
+  position: relative;
+}
+
+.version {
+  display: inline-block;
+  color: #ffffff;
+  opacity: 0.6;
+  margin-left: 15px;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  user-select: none;
 }
 
 .passcode {
+  height: 100%;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .pass {
@@ -43,17 +60,13 @@ body {
 
 .pass:focus {
   outline: none;
-  border-bottom: 3px solid #22e;
+  border-bottom: 3px solid #89cff0;
 }
 
 .pass::-webkit-outer-spin-button,
 .pass::-webkit-inner-spin-button {
   appearance: none;
   margin: 0;
-}
-
-h1 {
-  text-align: center;
 }
 
 @keyframes defaultAnim {

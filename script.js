@@ -13,22 +13,22 @@ let audioNames = {};
 let audiosIdS = {};
 let audiosIdA = {};
 
+let nowPlaying = 0;
+
 document.querySelectorAll('audio').forEach((audio, i) => {
   audios[`s${i + 1}`] = document.getElementById(audio.id);
   audiosIdS[`s${i + 1}`] = audio.id;
   audiosIdA[`a${i + 1}`] = `s${i + 1}`;
 });
 
-document.querySelectorAll('audio').forEach((audio) => {
-  audio.addEventListener('loadeddata', async (event) => {
-    console.log(`${event.target.getAttribute('id')} loaded`);
-    audiosLoaded.push(event.target.getAttribute('id'));
-    //audiosIdA[event.target.getAttribute('id')].disabled = false;
-    /*document
-      .getElementById(audiosIdA[event.target.getAttribute('id')])
-      .classList.remove('red');*/
+function checkAudioLoad() {
+  document.querySelectorAll('audio').forEach((audio) => {
+    if (audio.readyState === 4) {
+      console.log(`${audio.getAttribute('id')} loaded`);
+      audiosLoaded.push(audio.getAttribute('id'));
+    }
   });
-});
+}
 
 document.addEventListener('DOMContentLoaded', () => {
   isLoaded = true;
@@ -39,13 +39,12 @@ const title = document.getElementById('title');
 let loadInterval = setInterval(async () => {
   if (isLoaded) document.body.hidden = false;
 
-  if (
-    window.navigator.onLine &&
-    audiosLoaded.length !== Object.entries(audios).length + 1
-  ) {
-    const text = `${audiosLoaded.length}/${
+  if (audiosLoaded.length !== Object.entries(audios).length + 1) {
+    checkAudioLoad();
+
+    const text = `${audiosLoaded.length} of ${
       Object.values(audios).length
-    } Audios Loaded`;
+    } audios loaded`;
 
     document.title = text;
     title.textContent = text;
@@ -60,8 +59,8 @@ let loadInterval = setInterval(async () => {
 
     await wait(2000);
 
-    document.title = 'EPX Soundboard';
-    title.textContent = 'EPX Soundboard';
+    document.title = 'Wizard of Oz';
+    title.textContent = 'Wizard of Oz';
   }
 });
 
@@ -82,8 +81,6 @@ let developerRefresh;
 let isDeveloper = false;
 
 document.getElementById('version').addEventListener('click', () => {
-  if (isDeveloper) return;
-
   if (developerPresses < 1) {
     developerRefresh = setTimeout(() => {
       developerPresses = 0;
@@ -97,16 +94,29 @@ document.getElementById('version').addEventListener('click', () => {
   }
 
   if (developerPresses >= 10) {
-    isDeveloper = true;
-    clearTimeout(developerRefresh);
-    alert("You're now a developer!");
+    if (!isDeveloper) {
+      isDeveloper = true;
+      developerPresses = 0;
+      clearTimeout(developerRefresh);
+      alert("You're now a developer!");
 
-    enableDev();
+      enableDev();
+    } else {
+      isDeveloper = false;
+      developerPresses = 0;
+      clearTimeout(developerRefresh);
+
+      disableDev();
+    }
   }
 });
 
 function enableDev() {
-  devOptions.hidden = false;
+  devOptions.style.display = 'block';
+}
+
+function disableDev() {
+  devOptions.style.display = 'none';
 }
 
 devSpeedDrop.addEventListener('change', (event) => {
@@ -150,7 +160,7 @@ function checkHoverEnter(event) {
 
     btn.textContent = `${audioNames[btnId]} (${formatSeconds(
       time.currentTime
-    )}/${formatSeconds(time.duration)})`;
+    )} / ${formatSeconds(time.duration)})`;
   }, 2);
 }
 
@@ -211,7 +221,26 @@ function check(event) {
   }
 }
 
-// Audio playingg button animation
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'd') {
+    if (nowPlaying === Object.entries(audios).length) {
+      nowPlaying = 0;
+      stopAllSounds();
+    } else {
+      stopAllSounds();
+      nowPlaying++;
+      playSound(`a${nowPlaying}`);
+    }
+  }
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 's') {
+    stopAllSounds();
+  }
+});
+
+// Audio playing button animation
 let opacity = 0;
 let increment = 1;
 let max = 99;
@@ -262,7 +291,7 @@ function bounceNumber() {
 setInterval(bounceNumber, 10);
 
 // Default Animation
-const allElements = document.body.querySelectorAll(':not(div, audio, link)');
+const allElements = document.body.querySelectorAll(':not(div, .noAnimDelay *)');
 const ANIMATION_DELAY = 0.1;
 
 allElements.forEach((element, i) => {
@@ -276,9 +305,11 @@ function playSound(audio) {
 
   if (typeof audio === 'string') {
     document.getElementById(audio).play();
+    nowPlaying = Number(audio.replace('a', ''));
     return;
   } else {
     audio.play();
+    nowPlaying = Number(audio.id.replace('a', ''));
   }
 }
 

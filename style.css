@@ -1,12 +1,47 @@
-* {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
 *:not(body, html, .versionWrapper *, audio, div, link) {
   animation-name: defaultAnim;
   animation-duration: 0.5s;
   color: white;
   animation-fill-mode: both;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+body {
+  background-color: #222;
+}
+
+button {
+  border: none;
+  padding: 12px 32px;
+  border-radius: 6px;
+  margin-left: 10px;
+  transition: 0.13s;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+button:not(:disabled, .versionBtn):hover {
+  opacity: 0.8;
+}
+
+button:not(:disabled):active {
+  background-color: #00000000;
+}
+
+button.song {
+  background-color: #22cc22;
+}
+
+button.sfx {
+  background-color: #009;
+}
+
+button.red {
+  background-color: #cc2222;
 }
 
 .versionWrapper {
@@ -15,7 +50,9 @@
 
 .version {
   display: inline-block;
-  color: #ffffff20;
+  color: #ffffff;
+  opacity: 0.6;
+  margin-left: 15px;
   position: fixed;
   bottom: 0;
   text-align: center;
@@ -23,6 +60,7 @@
 }
 
 .devOptions {
+  display: none;
   margin-left: 25%;
 }
 
@@ -56,28 +94,6 @@
   font-size: 30px;
 }
 
-button {
-  border: none;
-  padding: 12px 32px;
-  border-radius: 6px;
-  margin-left: 10px;
-  transition: 0.13s;
-  font-weight: 500;
-  font-size: 18px;
-}
-
-button:not(:disabled, .versionBtn):hover {
-  opacity: 0.8;
-}
-
-button:not(:disabled):active {
-  background-color: #00000000;
-}
-
-html {
-  background-color: #222;
-}
-
 .title {
   margin-top: 25px;
   text-align: center;
@@ -86,18 +102,6 @@ html {
 .stopAudio {
   margin: auto;
   width: 25%;
-}
-
-button.song {
-  background-color: #070;
-}
-
-button.sfx {
-  background-color: #009;
-}
-
-button.red {
-  background-color: red;
 }
 
 .controls {

@@ -1,126 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EPX Soundboard</title>
 
-    <audio id="a1" src="./sounds/Narrator Music.mp3"></audio>
-    <audio id="a2" src="./sounds/Scene 1 (Dining Music).mp3"></audio>
-    <audio id="a3" src="./sounds/Scene 1,11 (Doorbell SFX).mp3"></audio>
-    <audio id="a4" src="./sounds/Scene 2 (Little Dressmakers Song).mp3"></audio>
-    <audio id="a5" src="./sounds/Scene 2 (Walking SFX).mp3"></audio>
-    <audio id="a6" src="./sounds/Scene 3 (Thunder SFX).mp3"></audio>
-    <audio id="a7" src="./sounds/Scene 4 (Rain SFX).mp3"></audio>
-    <audio id="a8" src="./sounds/Scene 4 (Dabudabee).mp3"></audio>
-    <audio
-      id="a9"
-      src="./sounds/Scene 6 (Merry Go Round of Life Song).mp3"></audio>
-    <audio id="a10" src="./sounds/Scene 8 (So This Is Love Song).mp3"></audio>
-    <audio id="a11" src="./sounds/Scene 8,12 (Clock Ticking SFX).mp3"></audio>
-    <audio id="a12" src="./sounds/Scene 1,11 (Doorbell SFX).mp3"></audio>
-    <audio id="a13" src="./sounds/Scene 11 (Glass Breaking SFX).mp3"></audio>
-    <audio id="a14" src="./sounds/Scene 8,12 (Clock Ticking SFX).mp3"></audio>
-    <audio id="a15" src="./sounds/Scene 12 (Wedding March).mp3"></audio>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wizard of Oz</title>
 
-    <link rel="stylesheet" href="./style.css" />
-    <link rel="stylesheet" href="./versionloader/style.css" />
-  </head>
-  <body hidden>
-    <div class="versionWrapper">
-      <p id="version" class="version">Version: Loading...</p>
-    </div>
+  <audio id="a1" src="./sounds/Munchkinland.mp3"></audio>
 
-    <h1 class="title" id="title">EPX Soundboard</h1>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./font.css">
+  <link rel="stylesheet" href="./versionloader/style.css" />
+</head>
 
-    <div class="soundboard">
-      <div class="narrator">
+<body hidden>
+  <div class="versionWrapper">
+    <p id="version" class="version">Version: Loading...</p>
+  </div>
+
+  <h1 class="title" id="title">Wizard of Oz</h1>
+
+  <div class="soundboard">
+    <!-- <div class="narrator">
         <h2>Narrator</h2>
         <button id="s1" class="s1 song">Narrator Music</button>
       </div>
-      <br />
-      <div class="scene1">
-        <h2>Scene 1</h2>
-        <button id="s2" class="s2 song">Dining Music</button>
-        <button id="s3" class="s3 sfx">Doorbell</button>
-      </div>
-      <br />
-      <div class="scene2">
-        <h2>Scene 2</h2>
-        <button id="s4" class="s4 song">Little Dressmakers</button>
-        <button id="s5" class="s5 sfx">Walking</button>
-      </div>
-      <br />
-      <div class="scene3">
-        <h2>Scene 3</h2>
-        <button id="s6" class="s6 sfx">Thunder</button>
-      </div>
-      <br />
-      <div class="scene4">
-        <h2>Scene 4</h2>
-        <button id="s7" class="s7 sfx">Rain</button>
-        <button id="s8" class="s8 song">Dabudabee</button>
-      </div>
-      <br />
-      <div class="scene6">
-        <h2>Scene 6</h2>
-        <button id="s9" class="s9 song">Merry Go Round of Life</button>
-      </div>
-      <br />
-      <div class="scene8">
-        <h2>Scene 8</h2>
-        <button id="s10" class="s10 song">So This Is Love</button>
-        <button id="s11" class="s11 sfx">Clock Ticking</button>
-      </div>
-      <br />
-      <div class="scene11">
-        <h2>Scene 11</h2>
-        <button id="s12" class="s12 sfx">Doorbell</button>
-        <button id="s13" class="s13 sfx">Glass Breaking</button>
-      </div>
-      <br />
-      <div class="scene12">
-        <h2>Scene 12</h2>
-        <button id="s14" class="s14 sfx">Clock Ticking</button>
-        <button id="s15" class="s15 song">Wedding March</button>
-      </div>
-      <br />
-      <div class="controls">
-        <button class="red stopAudio" id="stopAudio" style="text-align: center">
-          Stop
-        </button>
-        <button class="red lock" id="lock" style="text-align: center">
-          Lock
-        </button>
-      </div>
+      <br /> -->
+    <div class="scene3">
+      <h2>Scene 3</h2>
+      <button id="s1" class="s1 song">Munchkinland</button>
     </div>
-
-    <div class="devOptions" id="devOptions" hidden>
-      <h1>Developer Options</h1>
-      <div class="devSpeed">
-        <h3>Playback Speed</h3>
-        <select name="devSpeed" id="devSpeedDrop" class="devSpeedDrop">
-          <option value="0.25">0.25x</option>
-          <option value="0.5">0.5x</option>
-          <option value="0.75">0.75x</option>
-          <option value="1" selected>1x</option>
-          <option value="1.25">1.25x</option>
-          <option value="1.5">1.5x</option>
-          <option value="1.75">1.75x</option>
-          <option value="2">2x</option>
-        </select>
-
-        <br />
-        <h4>&nbsp;Preserve Pitch?</h4>
-        <input
-          type="checkbox"
-          id="devPreservePitch"
-          class="devPreservePitch"
-          checked />
-      </div>
+    <br />
+    <div class="controls">
+      <button class="red stopAudio" id="stopAudio" style="text-align: center">
+        Stop
+      </button>
+      <!-- <button class="red lock" id="lock" style="text-align: center">
+        Lock
+      </button> -->
     </div>
+  </div>
 
-    <script src="./script.js"></script>
-    <script src="./versionloader/loader.js"></script>
-  </body>
+  <div class="devOptions noAnimDelay" id="devOptions">
+    <h1>Developer Options</h1>
+    <div class="devSpeed">
+      <h3>Playback Speed</h3>
+      <select name="devSpeed" id="devSpeedDrop" class="devSpeedDrop">
+        <option value="0.25">0.25x</option>
+        <option value="0.5">0.5x</option>
+        <option value="0.75">0.75x</option>
+        <option value="1" selected>1x</option>
+        <option value="1.25">1.25x</option>
+        <option value="1.5">1.5x</option>
+        <option value="1.75">1.75x</option>
+        <option value="2">2x</option>
+      </select>
+
+      <br />
+      <h4>&nbsp;Preserve Pitch?</h4>
+      <input type="checkbox" id="devPreservePitch" class="devPreservePitch" checked />
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+  <script src="./versionloader/loader.js"></script>
+</body>
+
 </html>
