@@ -21,40 +21,37 @@ document.querySelectorAll('audio').forEach((audio, i) => {
   audiosIdA[`a${i + 1}`] = `s${i + 1}`;
 });
 
-function checkAudioLoad() {
-  document.querySelectorAll('audio').forEach((audio) => {
-    if (audio.readyState === 4) {
-      console.log(`${audio.getAttribute('id')} loaded`);
-      audiosLoaded.push(audio.getAttribute('id'));
-    }
-  });
-}
-
 document.addEventListener('DOMContentLoaded', () => {
   isLoaded = true;
 });
 
+function checkAudioLoad() {
+  document.querySelectorAll('audio').forEach((audio) => {
+    if (!audiosLoaded.includes(audio.id) && audio.readyState === 4) {
+      console.log(`${audio.id} loaded`);
+      audiosLoaded.push(audio.id);
+    }
+  });
+}
+
 const title = document.getElementById('title');
 
 let loadInterval = setInterval(async () => {
+  if (!redirectedFromPasscode) return;
   if (isLoaded) document.body.hidden = false;
 
-  if (audiosLoaded.length !== Object.entries(audios).length + 1) {
+  checkAudioLoad();
+
+  const text = `${audiosLoaded.length} of ${
+    Object.values(audios).length
+  } audios loaded`;
+
+  document.title = text;
+  title.textContent = text;
+
+  if (audiosLoaded.length < Object.entries(audios).length) {
     checkAudioLoad();
-
-    const text = `${audiosLoaded.length} of ${
-      Object.values(audios).length
-    } audios loaded`;
-
-    document.title = text;
-    title.textContent = text;
-  }
-
-  if (
-    isLoaded &&
-    audiosLoaded.length === Object.entries(audios).length &&
-    redirectedFromPasscode
-  ) {
+  } else if (audiosLoaded.length === Object.entries(audios).length) {
     clearInterval(loadInterval);
 
     await wait(2000);
@@ -254,23 +251,23 @@ setInterval(() => {
       btn.textContent = audioNames[btn.getAttribute('id')];
 
       if (btn.classList.contains('sfx')) {
-        btn.style.backgroundColor = '#000099';
+        btn.style.backgroundColor = '#2222cc';
       }
 
       if (btn.classList.contains('song')) {
-        btn.style.backgroundColor = '#007700';
+        btn.style.backgroundColor = '#00aa00';
       }
     }
 
     if (!audio.paused) {
       if (btn.classList.contains('sfx')) {
-        btn.style.backgroundColor = `#000099${
+        btn.style.backgroundColor = `#2222cc${
           opacity < 10 ? '0' : ''
         }${opacity}`;
       }
 
       if (btn.classList.contains('song')) {
-        btn.style.backgroundColor = `#007700${
+        btn.style.backgroundColor = `#00aa00${
           opacity < 10 ? '0' : ''
         }${opacity}`;
       }
@@ -291,7 +288,9 @@ function bounceNumber() {
 setInterval(bounceNumber, 10);
 
 // Default Animation
-const allElements = document.body.querySelectorAll(':not(div, .noAnimDelay *)');
+const allElements = document.body.querySelectorAll(
+  ':not(body, html .versionWrapper *, div, audio, .noAnimDelay *)'
+);
 const ANIMATION_DELAY = 0.1;
 
 allElements.forEach((element, i) => {

@@ -33,11 +33,11 @@ button:not(:disabled):active {
 }
 
 button.song {
-  background-color: #22cc22;
+  background-color: #00aa00;
 }
 
 button.sfx {
-  background-color: #009;
+  background-color: #2222cc;
 }
 
 button.red {
