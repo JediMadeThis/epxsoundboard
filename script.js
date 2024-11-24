@@ -182,7 +182,7 @@ function getTime(btnId) {
 }
 
 // Detect button click
-function check(event) {
+async function check(event) {
   const btnId = event.target.getAttribute('id');
 
   if (btnId === 'stopAudio') {
@@ -217,8 +217,17 @@ function check(event) {
     if (audios[btnId].paused) {
       playSound(audios[btnId]);
     } else {
+      while (audios[btnId].volume > 0) {
+        audios[btnId].volume -= 0.05;
+        audios[btnId].volume = audios[btnId].volume.toFixed(2);
+
+        await wait(20);
+      }
+
       audios[btnId].pause();
       audios[btnId].currentTime = 0;
+
+      audios[btnId].volume = 1;
     }
   }
 }
@@ -318,9 +327,17 @@ function playSound(audio) {
 }
 
 function stopAllSounds() {
-  Object.values(audios).forEach((audio) => {
+  Object.values(audios).forEach(async (audio) => {
+    while (audio.volume > 0) {
+      audio.volume -= 0.05;
+      audio.volume = audio.volume.toFixed(2);
+
+      await wait(20);
+    }
+
     audio.pause();
     audio.currentTime = 0;
+    audio.volume = 1;
     console.log(`${audio} stopped`);
   });
 }
