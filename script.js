@@ -214,7 +214,12 @@ function check(event) {
       window.location.href = './passcode/index.html';
     }
   } else {
-    playSound(audios[btnId]);
+    if (audios[btnId].paused) {
+      playSound(audios[btnId]);
+    } else {
+      audios[btnId].pause();
+      audios[btnId].currentTime = 0;
+    }
   }
 }
 
