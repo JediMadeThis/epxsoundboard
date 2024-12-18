@@ -130,9 +130,9 @@ devPreservePitch.addEventListener('change', (event) => {
 
 document.querySelectorAll('button').forEach((btn) => {
   btn.addEventListener('click', check);
-  btn.addEventListener('click', checkHoverEnter);
-  btn.addEventListener('mouseover', checkHoverEnter);
-  btn.addEventListener('mouseleave', checkHoverLeave);
+  // btn.addEventListener('click', checkHoverEnter);
+  // btn.addEventListener('mouseover', checkHoverEnter);
+  // btn.addEventListener('mouseleave', checkHoverLeave);
 
   if (btn.id.startsWith('s')) {
     audioNames[btn.getAttribute('id')] = btn.textContent;
