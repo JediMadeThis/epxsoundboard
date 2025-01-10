@@ -35,6 +35,21 @@ function checkAudioLoad() {
 }
 
 const title = document.getElementById('title');
+let isAudiosLoaded = false;
+
+window.addEventListener('offline', () => {
+  title.textContent = 'Connection lost, unable to play sounds';
+});
+
+window.addEventListener('online', () => {
+  if (audiosLoaded) {
+    title.textContent = 'Connection restored';
+
+    setTimeout(() => {
+      title.textContent = 'Wizard of Oz';
+    }, 1000);
+  }
+});
 
 let loadInterval = setInterval(async () => {
   if (!redirectedFromPasscode) return;
@@ -53,6 +68,7 @@ let loadInterval = setInterval(async () => {
     checkAudioLoad();
   } else if (audiosLoaded.length === Object.entries(audios).length) {
     clearInterval(loadInterval);
+    isAudiosLoaded = true;
 
     await wait(2000);
 
@@ -305,7 +321,7 @@ setInterval(bounceNumber, 10);
 const allElements = document.body.querySelectorAll(
   ':not(body, html .versionWrapper *, div, audio, .noAnimDelay *)'
 );
-const ANIMATION_DELAY = 0.1;
+const ANIMATION_DELAY = 0.05;
 
 allElements.forEach((element, i) => {
   let delay = i * ANIMATION_DELAY;

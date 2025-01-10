@@ -34,7 +34,7 @@ pass.addEventListener('input', async (event) => {
 
 // Animation
 const allElements = document.body.querySelectorAll(':not(div, audio, link)');
-const ANIMATION_DELAY = 0.1;
+const ANIMATION_DELAY = 0.05;
 
 allElements.forEach((element, i) => {
   let delay = i * ANIMATION_DELAY;
