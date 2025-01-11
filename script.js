@@ -1,9 +1,18 @@
-// CHECK PASSCODE/LOCK
+let passcodeEnabled = false;
+let buttonPlayingOpacityIncrementsDecrements = 1;
+let audioFadeDecrements = 0.05;
+
+let sfxBtnColor = '#2222cc';
+let songBtnColor = '#00aa00';
+
+// Check if redirected from passcode.html
 let redirectedFromPasscode = sessionStorage.getItem('redirectedFromPasscode');
 
-// If not redirected from passcode.html, redirect to passcode.html
-if (!redirectedFromPasscode) {
-  window.location.href = './passcode/index.html';
+if (passcodeEnabled) {
+  // If it does not, redirect to passcode.html
+  if (!redirectedFromPasscode) {
+    window.location.href = './passcode/index.html';
+  }
 }
 
 let isLoaded = false;
@@ -16,9 +25,9 @@ let audiosIdA = {};
 let nowPlaying = 0;
 
 document.querySelectorAll('audio').forEach((audio, i) => {
-  audios[`s${i + 1}`] = document.getElementById(audio.id);
-  audiosIdS[`s${i + 1}`] = audio.id;
-  audiosIdA[`a${i + 1}`] = `s${i + 1}`;
+  audios[`s${audio.id.replace('a', '')}`] = document.getElementById(audio.id);
+  audiosIdS[`s${audio.id.replace('a', '')}`] = audio.id;
+  audiosIdA[`a${audio.id.replace('a', '')}`] = `s${audio.id.replace('a', '')}`;
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -52,7 +61,6 @@ window.addEventListener('online', () => {
 });
 
 let loadInterval = setInterval(async () => {
-  if (!redirectedFromPasscode) return;
   if (isLoaded) document.body.hidden = false;
 
   checkAudioLoad();
@@ -146,48 +154,47 @@ devPreservePitch.addEventListener('change', (event) => {
 
 document.querySelectorAll('button').forEach((btn) => {
   btn.addEventListener('click', check);
-  // btn.addEventListener('click', checkHoverEnter);
-  // btn.addEventListener('mouseover', checkHoverEnter);
-  // btn.addEventListener('mouseleave', checkHoverLeave);
+  //! btn.addEventListener('click', checkHoverEnter);
+  //! btn.addEventListener('mouseover', checkHoverEnter);
+  //! btn.addEventListener('mouseleave', checkHoverLeave);
 
-  if (btn.id.startsWith('s')) {
-    audioNames[btn.getAttribute('id')] = btn.textContent;
-  }
+  //! if (btn.id.startsWith('s')) {
+  //!   audioNames[btn.getAttribute('id')] = btn.textContent;
+  //! }
 });
 
 let overInterval;
 let leaveInterval;
 
-function checkHoverEnter(event) {
-  clearInterval(overInterval);
+//! function checkHoverEnter(event) {
+//!   clearInterval(overInterval);
 
-  const btn = event.target;
-  const btnId = btn.getAttribute('id');
+//!   const btn = event.target;
+//!   const btnId = btn.getAttribute('id');
 
-  if (btnId === 'stopAudio' || btnId === 'lock') return;
-  if (audios[btnId].paused) return;
+//!   if (btnId === 'stopAudio' || btnId === 'lock') return;
+//!   if (audios[btnId].paused) return;
 
-  overInterval = setInterval(() => {
-    if (audios[btnId].paused) return;
-    const time = getTime(btnId);
+//!   overInterval = setInterval(() => {
+//!     if (audios[btnId].paused) return;
+//!     const time = getTime(btnId);
 
-    btn.textContent = `${audioNames[btnId]} (${formatSeconds(
-      time.currentTime
-    )} / ${formatSeconds(time.duration)})`;
-  }, 2);
-}
+//!     btn.textContent = `${audioNames[btnId]} (${formatSeconds(
+//!       time.currentTime
+//!     )} / ${formatSeconds(time.duration)})`;
+//!   }, 2);
+//! }
 
-// Checks when cursor leaves button
-function checkHoverLeave(event) {
-  const btn = event.target;
-  const btnId = btn.getAttribute('id');
+//! function checkHoverLeave(event) {
+//!   const btn = event.target;
+//!   const btnId = btn.getAttribute('id');
 
-  if (btnId === 'stopAudio' || btnId === 'lock') return;
+//!   if (btnId === 'stopAudio' || btnId === 'lock') return;
 
-  clearInterval(overInterval);
+//!   clearInterval(overInterval);
 
-  btn.textContent = audioNames[btnId];
-}
+//!   btn.textContent = audioNames[btnId];
+//! }
 
 // Get current & duration time of audio element
 function getTime(btnId) {
@@ -234,7 +241,7 @@ async function check(event) {
       playSound(audios[btnId]);
     } else {
       while (audios[btnId].volume > 0) {
-        audios[btnId].volume -= 0.05;
+        audios[btnId].volume -= audioFadeDecrements;
         audios[btnId].volume = audios[btnId].volume.toFixed(2);
 
         await wait(20);
@@ -269,7 +276,7 @@ document.addEventListener('keydown', (event) => {
 
 // Audio playing button animation
 let opacity = 0;
-let increment = 1;
+let increment = buttonPlayingOpacityIncrementsDecrements;
 let max = 99;
 
 setInterval(() => {
@@ -277,33 +284,39 @@ setInterval(() => {
     const audio = document.getElementById(audioId);
     const btn = document.getElementById(audiosIdA[audioId]);
 
-    if (audio.paused) {
-      btn.textContent = audioNames[btn.getAttribute('id')];
+    try {
+      if (audio.paused) {
+        //! btn.textContent = audioNames[btn.getAttribute('id')];
 
-      if (btn.classList.contains('sfx')) {
-        btn.style.backgroundColor = '#2222cc';
+        if (!btn) {
+          // console.log('Cannot find button for ' + audio.id);
+        }
+
+        if (btn.classList.contains('sfx')) {
+          btn.style.backgroundColor = sfxBtnColor;
+        }
+
+        if (btn.classList.contains('song')) {
+          btn.style.backgroundColor = songBtnColor;
+        }
       }
 
-      if (btn.classList.contains('song')) {
-        btn.style.backgroundColor = '#00aa00';
-      }
-    }
+      if (!audio.paused) {
+        if (btn.classList.contains('sfx')) {
+          btn.style.backgroundColor = `${sfxBtnColor}${
+            opacity < 10 ? '0' : ''
+          }${opacity}`;
+        }
 
-    if (!audio.paused) {
-      if (btn.classList.contains('sfx')) {
-        btn.style.backgroundColor = `#2222cc${
-          opacity < 10 ? '0' : ''
-        }${opacity}`;
+        if (btn.classList.contains('song')) {
+          btn.style.backgroundColor = `${songBtnColor}${
+            opacity < 10 ? '0' : ''
+          }${opacity}`;
+        }
       }
-
-      if (btn.classList.contains('song')) {
-        btn.style.backgroundColor = `#00aa00${
-          opacity < 10 ? '0' : ''
-        }${opacity}`;
-      }
-    }
+    } catch (e) {}
   });
-});
+}, 50);
 
 function bounceNumber() {
   if (opacity <= max && opacity + increment > max) {
@@ -345,7 +358,7 @@ function playSound(audio) {
 function stopAllSounds() {
   Object.values(audios).forEach(async (audio) => {
     while (audio.volume > 0) {
-      audio.volume -= 0.05;
+      audio.volume -= audioFadeDecrements;
       audio.volume = audio.volume.toFixed(2);
 
       await wait(20);

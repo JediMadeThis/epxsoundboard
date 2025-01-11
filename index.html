@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wizard of Oz</title>
 
-    <audio id="a1" src="./sounds/Munchkinland.mp3"></audio>
     <audio id="a2" src="./sounds/Tornado.mp3"></audio>
     <audio id="a3" src="./sounds/I'm Not A Witch.mp3"></audio>
     <audio id="a4" src="./sounds/Witch On Roof.mp3"></audio>
@@ -22,11 +21,9 @@
     <audio id="a15" src="./sounds/Sign On The Gate.mp3"></audio>
     <audio id="a16" src="./sounds/Magic Smoke Chords.mp3"></audio>
     <audio id="a17" src="./sounds/The Haunted Forest.mp3"></audio>
-    <audio id="a18" src="./sounds/The Jitterbug.mp3"></audio>
     <audio id="a19" src="./sounds/Terrified Lion.mp3"></audio>
     <audio id="a20" src="./sounds/Door Smashing.mp3"></audio>
     <audio id="a21" src="./sounds/Metal Scraping.mp3"></audio>
-    <audio id="a22" src="./sounds/Bird Chirping.mp3"></audio>
     <audio id="a23" src="./sounds/If I Only Had A Brain.mp3"></audio>
     <audio id="a24" src="./sounds/If I Only Had A Heart.mp3"></audio>
     <audio id="a25" src="./sounds/If I Only Had The Nerve.mp3"></audio>
@@ -36,6 +33,9 @@
     <audio id="a29" src="./sounds/Minecraft Fire.mp3"></audio>
     <audio id="a30" src="./sounds/Bell Ringing.mp3"></audio>
     <audio id="a31" src="./sounds/Witch Scream.m4a"></audio>
+    <audio id="a32" src="./sounds/Wing Flapping.mp3"></audio>
+    <audio id="a33" src="./sounds/Shimmer.mp3"></audio>
+    <audio id="a34" src="./sounds/End Title.mp3"></audio>
 
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./font.css" />
@@ -51,20 +51,16 @@
 
     <div class="soundboard">
       <div>
-        <h2>Narrator</h2>
+        <h2 title="When editz starts narrating">Narrator</h2>
         <button id="s8" class="s8 song">Main Title</button>
       </div>
       <div>
-        <h2>Scene 1</h2>
+        <h2 title="Dorothy at Kansas facing a tornado">Scene 1</h2>
         <button id="s2" class="s2 sfx">Tornado</button>
       </div>
       <div>
-        <h2>Scene 3</h2>
-        <button id="s1" class="s1 song" style="display: none">
-          Munchkinland
-        </button>
+        <h2 title="At Munchkinland">Scene 2</h2>
         <button id="s3" class="s3 song">I'm Not A Witch</button>
-        <button id="s22" class="s22 sfx">Birds Chirping</button>
         <button id="s10" class="s10 sfx">Munchkin Giggle</button>
         <button id="s5" class="s5 song">Threatening Witch</button>
         <button id="s31" class="s31 sfx">Witch Scream</button>
@@ -72,12 +68,12 @@
         <button id="s6" class="s6 song">Leaving Munchkinland</button>
       </div>
       <div>
-        <h2>Scene 4</h2>
+        <h2 title="Scarecrow Scene">Scene 3</h2>
         <button id="s23" class="s23 song">If I Only Had A Brain</button>
         <button id="s12" class="s12 song">WOTSTW (Duo)</button>
       </div>
       <div>
-        <h2>Scene 5</h2>
+        <h2 title="Tinman Scene">Scene 4</h2>
         <button id="s21" class="s21 sfx">Metal Scraping</button>
         <button id="s24" class="s24 song">If I Only Had A Heart</button>
         <button id="s4" class="s4 song">Witch On Roof</button>
@@ -85,33 +81,44 @@
         <button id="s13" class="s13 song">WOTSTW (Trio)</button>
       </div>
       <div>
-        <h2>Scene 6</h2>
+        <h2 title="Lion Scene">Scene 5</h2>
         <button id="s25" class="s25 song">If I Only Had The Nerve</button>
         <button id="s14" class="s14 song">WOTSTW (Quartet)</button>
       </div>
       <div>
-        <h2>Scene 7</h2>
+        <h2 title="Poppies Scene">Scene 6</h2>
         <button id="s11" class="s11 song">Poppies</button>
         <button id="s7" class="s7 song">The Spell</button>
         <button id="s28" class="s22 sfx">Birds Chirping</button>
       </div>
       <div>
-        <h2>Scene 8</h2>
+        <h2 title="When all four arrived at the Emerald City">Scene 7</h2>
         <button id="s30" class="s30 sfx">Bell Ringing</button>
         <button id="s27" class="s27 sfx">Magic</button>
         <button id="s15" class="s15 song">Sign On The Gate</button>
       </div>
       <div>
-        <h2>Scene 9</h2>
+        <h2 title="Oz Scene">Scene 8</h2>
         <button id="s16" class="s16 song">Magic Smoke Chords</button>
       </div>
       <div>
-        <h2>Scene 11</h2>
+        <h2 title="In the Haunted Forest">Scene 9</h2>
         <button id="s17" class="s17 song">The Haunted Forest</button>
-        <button id="s18" class="s18 song">The Jitterbug</button>
         <button id="s19" class="s19 song">Terrified Lion</button>
+        <button id="s32" class="s32 sfx">Wings Flapping</button>
+      </div>
+      <div>
+        <h2 title="Dorothy trapped by Wicked Witch">Scene 10</h2>
         <button id="s20" class="s20 sfx">Smashing Door</button>
         <button id="s26" class="s26 sfx">Water Splash</button>
+      </div>
+      <div>
+        <h2 title="When Oz is giving stuff">Scene 11</h2>
+        <button id="s33" class="s33 sfx">Shimmer</button>
+      </div>
+      <div>
+        <h2 title="End Credits">Credits</h2>
+        <button id="s34" class="s34 song">End Title</button>
       </div>
       <br />
       <div class="controls">
