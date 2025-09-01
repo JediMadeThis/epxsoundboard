@@ -15,7 +15,7 @@ body {
   background-color: #222;
 }
 
-button {
+/* button {
   border: none;
   padding: 12px 32px;
   border-radius: 6px;
@@ -23,18 +23,18 @@ button {
   transition: 0.13s;
   font-weight: 500;
   font-size: 18px;
-}
+} */
 
-button:not(:disabled, .versionBtn):hover {
+/* button:not(:disabled, .versionBtn):hover {
   opacity: 0.8;
 }
 
 button:not(:disabled):active {
   background-color: #00000000;
-}
+} */
 
 button.song {
-  background-color: #00aa00;
+  background-color: #2e8e3d;
 }
 
 button.sfx {
@@ -43,6 +43,24 @@ button.sfx {
 
 button.red {
   background-color: #cc2222;
+}
+
+.flashPlaying {
+  animation: flashPlayingAnim 2s infinite forwards;
+}
+
+@keyframes flashPlayingAnim {
+  0% {
+    background-color: var(--flash-color);
+  }
+
+  50% {
+    background-color: transparent;
+  }
+
+  100% {
+    background-color: var(--flash-color);
+  }
 }
 
 .versionWrapper {
@@ -81,33 +99,38 @@ button.red {
   margin-top: 75px;
 }
 
-.soundboard div {
-  margin-top: 36px;
+.soundboard .sbSection {
+  margin-top: 50px;
 }
 
-.soundboard div * {
-  display: inline;
+.soundboard .sbSection button {
+  display: inline-block;
+  color: #eee;
 }
 
-.soundboard div h2 {
+.soundboard .sbSection h2 {
+  display: inline-block;
+  margin: 0;
   margin-left: 18%;
   margin-right: 20px;
   font-size: 30px;
 }
 
 .title {
-  margin-top: 25px;
   text-align: center;
 }
 
 .stopAudio {
-  margin: auto;
   width: 25%;
+  margin-right: 10px;
 }
 
 .controls {
-  text-align: center;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  gap: 10px;
 }
 
 @keyframes defaultAnim {

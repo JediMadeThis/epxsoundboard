@@ -3,7 +3,7 @@ let buttonPlayingOpacityIncrementsDecrements = 1;
 let audioFadeDecrements = 0.05;
 
 let sfxBtnColor = '#2222cc';
-let songBtnColor = '#00aa00';
+let songBtnColor = '#2e8e3d';
 
 // Check if redirected from passcode.html
 let redirectedFromPasscode = sessionStorage.getItem('redirectedFromPasscode');
@@ -80,8 +80,8 @@ let loadInterval = setInterval(async () => {
 
     await wait(2000);
 
-    document.title = 'Wizard of Oz';
-    title.textContent = 'Wizard of Oz';
+    document.title = 'Moana';
+    title.textContent = 'Moana';
   }
 });
 
@@ -244,15 +244,33 @@ async function check(event) {
         audios[btnId].volume -= audioFadeDecrements;
         audios[btnId].volume = audios[btnId].volume.toFixed(2);
 
-        await wait(20);
+        await wait(20); // Adjust fade here (in ms)
       }
 
       audios[btnId].pause();
       audios[btnId].currentTime = 0;
 
       audios[btnId].volume = 1;
+
+      console.log(audiosIdA, audiosIdS, audios);
+
+      buttonFlash();
     }
   }
+}
+
+function buttonFlash() {
+  Object.values(audios).forEach((audio) => {
+    const btn = document.getElementById(audiosIdA[audio.id]);
+
+    if (audio && btn) {
+      if (!audio.paused) {
+        btn.classList.add('flashPlaying');
+      } else {
+        btn.classList.remove('flashPlaying');
+      }
+    }
+  });
 }
 
 document.addEventListener('keydown', (event) => {
@@ -260,10 +278,12 @@ document.addEventListener('keydown', (event) => {
     if (nowPlaying === Object.entries(audios).length) {
       nowPlaying = 0;
       stopAllSounds();
+      console.log('Stopped all sounds (from quick D key)');
     } else {
       stopAllSounds();
       nowPlaying++;
       playSound(`a${nowPlaying}`);
+      console.log('Playing: ' + nowPlaying);
     }
   }
 });
@@ -274,61 +294,67 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
-// Audio playing button animation
-let opacity = 0;
-let increment = buttonPlayingOpacityIncrementsDecrements;
-let max = 99;
+// // Audio playing button animation
+// let opacity = 0;
+// let increment = buttonPlayingOpacityIncrementsDecrements;
+// let max = 99;
 
-setInterval(() => {
-  Object.values(audiosIdS).forEach((audioId) => {
-    const audio = document.getElementById(audioId);
-    const btn = document.getElementById(audiosIdA[audioId]);
+// setInterval(() => {
+//   Object.values(audiosIdS).forEach((audioId) => {
+//     const audio = document.getElementById(audioId);
+//     const btn = document.getElementById(audiosIdA[audioId]);
 
-    try {
-      if (audio.paused) {
-        //! btn.textContent = audioNames[btn.getAttribute('id')];
+//     try {
+//       if (audio.paused) {
+//         //! btn.textContent = audioNames[btn.getAttribute('id')];
 
-        if (!btn) {
-          // console.log('Cannot find button for ' + audio.id);
-        }
+//         if (!btn) {
+//           // console.log('Cannot find button for ' + audio.id);
+//         }
 
-        if (btn.classList.contains('sfx')) {
-          btn.style.backgroundColor = sfxBtnColor;
-        }
+//         if (
+//           btn.classList.contains('sfx') &&
+//           btn.style.backgroundColor !== sfxBtnColor
+//         ) {
+//           btn.style.backgroundColor = sfxBtnColor;
+//         }
 
-        if (btn.classList.contains('song')) {
-          btn.style.backgroundColor = songBtnColor;
-        }
-      }
+//         if (
+//           btn.classList.contains('song') &&
+//           btn.style.backgroundColor !== songBtnColor
+//         ) {
+//           btn.style.backgroundColor = songBtnColor;
+//         }
+//       }
 
-      if (!audio.paused) {
-        if (btn.classList.contains('sfx')) {
-          btn.style.backgroundColor = `${sfxBtnColor}${
-            opacity < 10 ? '0' : ''
-          }${opacity}`;
-        }
+//       if (!audio.paused) {
+//         if (btn.classList.contains('sfx')) {
+//           btn.style.backgroundColor = `${sfxBtnColor}${
+//             opacity < 10 ? '0' : ''
+//           }${opacity}`;
+//         }
 
-        if (btn.classList.contains('song')) {
-          btn.style.backgroundColor = `${songBtnColor}${
-            opacity < 10 ? '0' : ''
-          }${opacity}`;
-        }
-      }
-    } catch (e) {}
-  });
-}, 50);
+//         if (btn.classList.contains('song')) {
+//           btn.style.backgroundColor = `${songBtnColor}${
+//             opacity < 10 ? '0' : ''
+//           }${opacity}`;
+//         }
+//       }
+//     } catch (e) {}
+//   });
+// }, 50);
 
-function bounceNumber() {
-  if (opacity <= max && opacity + increment > max) {
-    increment = -1;
-  } else if (opacity >= 0 && opacity + increment < 0) {
-    increment = 1;
-  }
+// function bounceNumber() {
+//   if (opacity <= max && opacity + increment > max) {
+//     increment = -1;
+//   } else if (opacity >= 0 && opacity + increment < 0) {
+//     increment = 1;
+//   }
 
-  opacity += increment;
-}
+//   opacity += increment;
+// }
 
-setInterval(bounceNumber, 10);
+// setInterval(bounceNumber, 10);
 
 // Default Animation
 const allElements = document.body.querySelectorAll(
@@ -345,14 +371,28 @@ allElements.forEach((element, i) => {
 function playSound(audio) {
   audio.volume = 1;
 
+  let btn;
+
   if (typeof audio === 'string') {
+    console.log('str');
+    btn = document.getElementById(audio);
+
     document.getElementById(audio).play();
     nowPlaying = Number(audio.replace('a', ''));
-    return;
   } else {
+    btn = document.getElementById(audiosIdA[audio.id]);
+
     audio.play();
     nowPlaying = Number(audio.id.replace('a', ''));
   }
+
+  if (btn.classList.contains('sfx')) {
+    btn.style.setProperty('--flash-color', sfxBtnColor);
+  } else if (btn.classList.contains('song')) {
+    btn.style.setProperty('--flash-color', songBtnColor);
+  }
+
+  buttonFlash();
 }
 
 function stopAllSounds() {
@@ -365,6 +405,9 @@ function stopAllSounds() {
     }
 
     audio.pause();
+
+    buttonFlash();
+
     audio.currentTime = 0;
     audio.volume = 1;
     console.log(`${audio} stopped`);

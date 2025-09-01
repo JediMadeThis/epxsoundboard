@@ -1,0 +1,39 @@
+.fancyBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 15px;
+  font-size: 20px;
+  font-weight: 600;
+  height: 50px;
+  transition: background-color 0.2s ease-in-out;
+  white-space: nowrap;
+  padding: 0 45px;
+  overflow: hidden;
+  margin: 5px;
+}
+
+.fancyBtnContent {
+  width: fit-content;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+  pointer-events: none;
+}
+
+button.song.fancyBtn:active {
+  background-color: #55aa55;
+}
+
+button.sfx.fancyBtn:active {
+  background-color: #4444cc;
+}
+
+button.red.fancyBtn:active {
+  background-color: #cc4444;
+}
+
+.fancyBtn:active .fancyBtnContent {
+  transform: scale(0.98);
+}
