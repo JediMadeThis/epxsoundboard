@@ -65,9 +65,9 @@ let loadInterval = setInterval(async () => {
 
   checkAudioLoad();
 
-  const text = `${audiosLoaded.length} of ${
-    Object.values(audios).length
-  } audios loaded`;
+  const text = `Loading... ${
+    (audiosLoaded.length / Object.values(audios).length) * 100
+  }% (${audiosLoaded.length}/${Object.values(audios).length})`;
 
   document.title = text;
   title.textContent = text;
@@ -358,7 +358,7 @@ document.addEventListener('keydown', (event) => {
 
 // Default Animation
 const allElements = document.body.querySelectorAll(
-  ':not(body, html .versionWrapper *, div, audio, .noAnimDelay *)'
+  ':not(body, html .versionWrapper *, div, audio, .noAnimDelay *), .sbSection'
 );
 const ANIMATION_DELAY = 0.05;
 

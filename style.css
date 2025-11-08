@@ -1,4 +1,5 @@
-*:not(body, html, .versionWrapper *, audio, div, link) {
+*:not(body, html, .versionWrapper *, audio, div, link),
+.sbSection {
   animation-name: defaultAnim;
   animation-duration: 0.5s;
   color: white;
@@ -63,6 +64,16 @@ button.red {
   }
 }
 
+.sbSection {
+  display: inline-block;
+  padding: 5px 45px;
+  border: 1.8px solid #363636;
+  background-color: #2e2e2e67;
+  border-radius: 10px;
+  margin-left: 18%;
+  margin-right: 18%;
+}
+
 .versionWrapper {
   position: relative;
 }
@@ -106,13 +117,13 @@ button.red {
 .soundboard .sbSection button {
   display: inline-block;
   color: #eee;
+  margin: 18px;
 }
 
 .soundboard .sbSection h2 {
   display: inline-block;
   margin: 0;
-  margin-left: 18%;
-  margin-right: 20px;
+  margin-right: 10px;
   font-size: 30px;
 }
 
