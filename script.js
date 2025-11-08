@@ -65,9 +65,10 @@ let loadInterval = setInterval(async () => {
 
   checkAudioLoad();
 
-  const text = `Loading... ${
-    (audiosLoaded.length / Object.values(audios).length) * 100
-  }% (${audiosLoaded.length}/${Object.values(audios).length})`;
+  const text = `Loading... ${(
+    (audiosLoaded.length / Object.values(audios).length) *
+    100
+  ).toFixed()}% (${audiosLoaded.length}/${Object.values(audios).length})`;
 
   document.title = text;
   title.textContent = text;
