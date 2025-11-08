@@ -34,7 +34,7 @@
       <p id="version" class="version">Version: Loading...</p>
     </div>
 
-    <h1 class="title" id="title">Moana</h1>
+    <h1 class="title" id="title">Moana Soundboard</h1>
 
     <div class="soundboard">
       <div class="sbSection">
@@ -152,9 +152,39 @@
     </div>
 
     <div class="devOptions noAnimDelay" id="devOptions">
-      <h1>Developer Options</h1>
+      <h1>Secret Settings</h1>
       <div class="devSpeed">
-        <h3>Playback Speed</h3>
+        <table>
+          <tr>
+            <td><h3>Playback Speed</h3></td>
+            <td>
+              <select name="devSpeed" id="devSpeedDrop" class="devSpeedDrop">
+                <option value="0.25">0.25x</option>
+                <option value="0.5">0.5x</option>
+                <option value="0.75">0.75x</option>
+                <option value="1" selected>1x</option>
+                <option value="1.25">1.25x</option>
+                <option value="1.5">1.5x</option>
+                <option value="1.75">1.75x</option>
+                <option value="2">2x</option>
+              </select>
+            </td>
+          </tr>
+          <br />
+          <tr>
+            <td><h3>Preserve Pitch?</h3></td>
+            <td>
+              <input
+                type="checkbox"
+                id="devPreservePitch"
+                class="devPreservePitch"
+                checked
+              />
+            </td>
+          </tr>
+        </table>
+
+        <!-- <h3>Playback Speed</h3>
         <select name="devSpeed" id="devSpeedDrop" class="devSpeedDrop">
           <option value="0.25">0.25x</option>
           <option value="0.5">0.5x</option>
@@ -167,13 +197,14 @@
         </select>
 
         <br />
-        <h4>&nbsp;Preserve Pitch?</h4>
+
+        <h3>Preserve Pitch?</h3>
         <input
           type="checkbox"
           id="devPreservePitch"
           class="devPreservePitch"
           checked
-        />
+        /> -->
       </div>
     </div>
 

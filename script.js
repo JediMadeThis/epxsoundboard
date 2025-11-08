@@ -81,8 +81,8 @@ let loadInterval = setInterval(async () => {
 
     await wait(2000);
 
-    document.title = 'Moana';
-    title.textContent = 'Moana';
+    document.title = 'Moana Soundboard';
+    title.textContent = 'Moana Soundboard';
   }
 });
 
@@ -120,7 +120,7 @@ document.getElementById('version').addEventListener('click', () => {
       isDeveloper = true;
       developerPresses = 0;
       clearTimeout(developerRefresh);
-      alert("You're now a developer!");
+      alert('You found secret settings!');
 
       enableDev();
     } else {

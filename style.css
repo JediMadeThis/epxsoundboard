@@ -6,10 +6,10 @@
   animation-fill-mode: both;
 }
 
-html,
+/* html,
 body {
   margin: 0;
-}
+} */
 
 html,
 body {
@@ -91,23 +91,39 @@ button.red {
 
 .devOptions {
   display: none;
-  margin-left: 25%;
+  /*    -->  display: block;    */
+
+  padding: 5px 45px;
+  border: 1.8px solid #363636;
+  background-color: #2e2e2e67;
+  border-radius: 10px;
+  margin-left: 18%;
+  margin-right: 18%;
+  margin-top: 35px;
 }
 
-.devOptions div * {
+table {
+  border-collapse: separate;
+  border-spacing: 20px 0;
+}
+
+.devOptions h1 {
+  text-align: center;
+}
+
+/* .devOptions div * {
   display: inline;
   margin-top: 5px;
-}
+} */
 
 .devSpeedDrop {
   background-color: #333;
-  margin-left: 25px;
   padding: 8px;
   border-radius: 5px;
 }
 
 .soundboard {
-  margin-top: 75px;
+  margin-top: 35px;
 }
 
 .soundboard .sbSection {
@@ -142,6 +158,7 @@ button.red {
   align-items: center;
   height: 50px;
   gap: 10px;
+  margin-top: 40px;
 }
 
 @keyframes defaultAnim {
