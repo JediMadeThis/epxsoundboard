@@ -117,14 +117,11 @@ document.getElementById('version').addEventListener('click', () => {
 
   if (developerPresses >= 10) {
     if (!isDeveloper) {
-      isDeveloper = true;
       developerPresses = 0;
       clearTimeout(developerRefresh);
-      alert('You found secret settings!');
 
       enableDev();
     } else {
-      isDeveloper = false;
       developerPresses = 0;
       clearTimeout(developerRefresh);
 
@@ -134,12 +131,18 @@ document.getElementById('version').addEventListener('click', () => {
 });
 
 function enableDev() {
-  devOptions.style.display = 'block';
+  isDeveloper = true;
+  devOptions.style.animation = 'slideDownAnimation 0.5s forwards ease';
 }
 
 function disableDev() {
-  devOptions.style.display = 'none';
+  isDeveloper = false;
+  devOptions.style.animation = 'slideDownAnimationReversed 0.25s forwards ease';
 }
+
+document.getElementById('devCloseIcon').addEventListener('click', () => {
+  disableDev();
+});
 
 devSpeedDrop.addEventListener('change', (event) => {
   setPlaybackSpeed(event.target.value);
