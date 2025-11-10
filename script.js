@@ -55,7 +55,7 @@ window.addEventListener('online', () => {
     title.textContent = 'Connection restored';
 
     setTimeout(() => {
-      title.textContent = 'Wizard of Oz';
+      title.textContent = 'Moana';
     }, 1000);
   }
 });
@@ -70,7 +70,7 @@ let loadInterval = setInterval(async () => {
     100
   ).toFixed()}% (${audiosLoaded.length}/${Object.values(audios).length})`;
 
-  document.title = text;
+  // document.title = text;
   title.textContent = text;
 
   if (audiosLoaded.length < Object.entries(audios).length) {
@@ -81,7 +81,7 @@ let loadInterval = setInterval(async () => {
 
     await wait(2000);
 
-    document.title = 'Moana Soundboard';
+    // document.title = 'Moana Soundboard';
     title.textContent = 'Moana Soundboard';
   }
 });
@@ -362,9 +362,9 @@ document.addEventListener('keydown', (event) => {
 
 // Default Animation
 const allElements = document.body.querySelectorAll(
-  ':not(body, html .versionWrapper *, div, audio, .noAnimDelay *), .sbSection'
+  ':not(body, html .versionWrapper *, div, audio, .noAnimDelay *, .sbSection *), .sbSection'
 );
-const ANIMATION_DELAY = 0.05;
+const ANIMATION_DELAY = 0.1;
 
 allElements.forEach((element, i) => {
   let delay = i * ANIMATION_DELAY;

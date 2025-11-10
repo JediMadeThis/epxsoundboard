@@ -1,4 +1,4 @@
-*:not(body, html, .versionWrapper *, audio, div, link, .devOptions *),
+*:not(body, html, .versionWrapper *, audio, div, link, .devOptions *, .sbSection *),
 .sbSection {
   animation-name: defaultAnim;
   animation-duration: 0.5s;
@@ -134,6 +134,7 @@ button.red {
   backdrop-filter: blur(7px);
   background-color: #2e2e2e67;
   border-radius: 10px;
+  box-shadow: 0 0 15px rgb(0, 0, 0, 15%);
   /* margin-left: 18%;
   margin-right: 18%; */
   /* margin-top: 35px; */
@@ -145,10 +146,12 @@ button.red {
   right: 0;
   width: 15px;
   height: 15px;
+  background-color: #cc222215 !important;
+  border: 1px solid #cc222266 !important;
 }
 
 .devCloseIcon:hover {
-  background-color: #cc222288;
+  background-color: #cc222277 !important;
 }
 
 table {
@@ -184,6 +187,7 @@ table {
   margin-left: 18%;
   margin-right: 18%;
   margin-top: 50px;
+  box-shadow: 0 0 15px rgb(0, 0, 0, 15%);
 }
 
 .soundboard .sbSection button {
