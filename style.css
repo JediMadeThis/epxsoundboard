@@ -148,6 +148,7 @@ button.red {
   height: 15px;
   background-color: #cc222215 !important;
   border: 1px solid #cc222266 !important;
+  transition: background-color 0.2s ease !important;
 }
 
 .devCloseIcon:hover {
@@ -156,7 +157,7 @@ button.red {
 
 table {
   border-collapse: separate;
-  border-spacing: 20px 0;
+  border-spacing: 40px 0;
 }
 
 .devOptions h1 {
@@ -172,6 +173,51 @@ table {
   background-color: #333;
   padding: 8px;
   border-radius: 5px;
+  border: none;
+  appearance: none;
+  padding-right: none;
+  width: 100px;
+  height: 45px;
+  font-size: 18px;
+  text-align: center;
+  transition: all 0.2s ease;
+  border: 2px solid #56565633;
+}
+
+.devSpeedDrop::-ms-expand:hover {
+  background: none;
+}
+
+.devSpeedDrop:focus {
+  outline: none;
+}
+
+.devSpeedDrop:hover,
+.devSpeedDrop:focus {
+  background-color: #444;
+}
+
+.devPreservePitch {
+  border: none;
+  background-color: #333;
+  box-shadow: none;
+  width: 120px;
+  transition: all 0.2s ease-in-out;
+  /* appearance: none; */
+}
+
+.devPreservePitch.on {
+  border: 1px solid #2e5e3e;
+  background-color: #2e8e3d;
+}
+
+.devPreservePitch.off {
+  border: 1px solid #cc2222;
+  background-color: #cc222255;
+}
+
+.devPreservePitch:active {
+  opacity: 0.85;
 }
 
 .soundboard {

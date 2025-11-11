@@ -101,6 +101,7 @@ const devPreservePitch = document.getElementById('devPreservePitch');
 let developerPresses = 0;
 let developerRefresh;
 let isDeveloper = false;
+let preservePitch = false;
 
 document.getElementById('version').addEventListener('click', () => {
   if (developerPresses < 1) {
@@ -148,9 +149,23 @@ devSpeedDrop.addEventListener('change', (event) => {
   setPlaybackSpeed(event.target.value);
 });
 
-devPreservePitch.addEventListener('change', (event) => {
+devPreservePitch.addEventListener('click', (event) => {
+  if (preservePitch) {
+    preservePitch = false;
+
+    devPreservePitch.classList.remove('on');
+    devPreservePitch.classList.add('off');
+  } else {
+    preservePitch = true;
+
+    devPreservePitch.classList.remove('off');
+    devPreservePitch.classList.add('on');
+  }
+
+  devPreservePitch.textContent = preservePitch ? 'On' : 'Off';
+
   Object.values(audios).forEach((audio) => {
-    audio.preservesPitch = event.target.checked;
+    audio.preservesPitch = preservePitch;
   });
 });
 

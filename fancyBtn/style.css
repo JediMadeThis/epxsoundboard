@@ -8,7 +8,7 @@
   font-size: 20px;
   font-weight: 600;
   height: 50px;
-  transition: background-color 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
   white-space: nowrap;
   padding: 0 45px;
   overflow: hidden;
@@ -23,17 +23,20 @@
 }
 
 button.song.fancyBtn:active {
-  background-color: #55aa55;
+  /* background-color: #55aa55bb; */
+  opacity: 0.85;
 }
 
 button.sfx.fancyBtn:active {
-  background-color: #4444cc;
+  /* background-color: #4444ccbb; */
+  opacity: 0.85;
 }
 
 button.red.fancyBtn:active {
-  background-color: #cc4444;
+  /* background-color: #cc4444bb; */
+  opacity: 0.85;
 }
 
 .fancyBtn:active .fancyBtnContent {
-  transform: scale(0.98);
+  transform: scale(0.985);
 }
