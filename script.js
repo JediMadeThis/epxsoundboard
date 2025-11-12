@@ -133,7 +133,7 @@ document.getElementById('version').addEventListener('click', () => {
 
 function enableDev() {
   isDeveloper = true;
-  devOptions.style.animation = 'slideDownAnimation 0.5s forwards ease';
+  devOptions.style.animation = 'slideDownAnimation 1.35s forwards ease';
 }
 
 function disableDev() {

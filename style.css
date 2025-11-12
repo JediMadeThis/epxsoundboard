@@ -1,7 +1,7 @@
 *:not(body, html, .versionWrapper *, audio, div, link, .devOptions *, .sbSection *),
 .sbSection {
   animation-name: defaultAnim;
-  animation-duration: 0.5s;
+  animation-duration: 1.25s;
   animation-fill-mode: both;
 }
 
@@ -12,32 +12,6 @@
 .devOptions.hide {
   animation: slideDownAnimationReversed 0.25s forwards ease;
 } */
-
-@keyframes slideDownAnimation {
-  0% {
-    transform: translate(-50%, -200%);
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  100% {
-    transform: translate(-50%, -50%);
-    opacity: 1;
-  }
-}
-
-@keyframes slideDownAnimationReversed {
-  0% {
-    transform: translate(-50%, -50%);
-    opacity: 1;
-  }
-
-  100% {
-    transform: translate(-50%, -200%);
-    opacity: 0;
-    visibility: hidden;
-  }
-}
 
 * {
   color: white;
@@ -88,20 +62,6 @@ button.red {
 
 .flashPlaying {
   animation: flashPlayingAnim 2s infinite forwards;
-}
-
-@keyframes flashPlayingAnim {
-  0% {
-    background-color: var(--flash-color);
-  }
-
-  50% {
-    background-color: transparent;
-  }
-
-  100% {
-    background-color: var(--flash-color);
-  }
 }
 
 .versionWrapper {
@@ -267,10 +227,70 @@ table {
   margin-top: 40px;
 }
 
+/* .lock,
+.stopAudio {
+  transition: opacity 0.2s ease-in-out;
+}
+
+.lock:active,
+.stopAudio:active {
+  opacity: 0.85 !important;
+} */
+
+@keyframes slideDownAnimation {
+  0% {
+    transform: translate(-50%, -200%);
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  30% {
+    transform: translate(-50%, -30%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDownAnimationReversed {
+  0% {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, -200%);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes flashPlayingAnim {
+  0% {
+    background-color: var(--flash-color);
+  }
+
+  50% {
+    background-color: transparent;
+  }
+
+  100% {
+    background-color: var(--flash-color);
+  }
+}
+
 @keyframes defaultAnim {
   0% {
     opacity: 0;
     transform: translateY(50%);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translateY(-10%);
   }
 
   100% {
