@@ -149,7 +149,7 @@ devSpeedDrop.addEventListener('change', (event) => {
   setPlaybackSpeed(event.target.value);
 });
 
-devPreservePitch.addEventListener('click', (event) => {
+devPreservePitch.addEventListener('click', (_event) => {
   if (preservePitch) {
     preservePitch = false;
 
