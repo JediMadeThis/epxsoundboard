@@ -221,14 +221,21 @@
 
     <div class="fadeBottom"></div>
 
-    <div class="controlsBg">
-      <div class="controls">
+    <div class="controlsBg" id="controlsBg">
+      <button class="showControlsBtn" id="showControlsBtn" hidden>
+        Show controls
+      </button>
+
+      <div class="controls" id="controls">
         <button class="red stopAudio fancyBtn" id="stopAudio">
           <div class="fancyBtnContent">Stop</div>
         </button>
+
         <button class="red lock fancyBtn" id="lock">
           <div class="fancyBtnContent">Lock</div>
         </button>
+
+        <button class="minimizeBtn" id="minimizeBtn">X</button>
       </div>
     </div>
 

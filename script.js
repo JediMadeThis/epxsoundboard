@@ -215,6 +215,26 @@ let leaveInterval;
 //!   btn.textContent = audioNames[btnId];
 //! }
 
+const minimizeBtn = document.getElementById('minimizeBtn');
+const showControlsBtn = document.getElementById('showControlsBtn');
+const controlsDiv = document.getElementById('controls');
+const controlsBg = document.getElementById('controlsBg');
+
+minimizeBtn.addEventListener('click', () => {
+  controlsBg.style.animation = 'minimizeControlBg 0.85s ease-in-out forwards';
+  controlsDiv.style.display = 'none';
+
+  showControlsBtn.hidden = false;
+});
+
+showControlsBtn.addEventListener('click', () => {
+  controlsBg.style.animation =
+    'minimizeControlBgReversed 0.85s ease-in-out forwards';
+  controlsDiv.style.display = 'flex';
+
+  showControlsBtn.hidden = true;
+});
+
 // Get current & duration time of audio element
 function getTime(btnId) {
   let currentTime = audios[btnId].currentTime;
@@ -226,6 +246,8 @@ function getTime(btnId) {
 // Detect button click
 async function check(event) {
   const btnId = event.target.getAttribute('id');
+
+  if (btnId === 'minimizeBtn' || btnId === 'showControlsBtn') return;
 
   if (btnId === 'stopAudio') {
     return stopAllSounds();
@@ -377,7 +399,7 @@ document.addEventListener('keydown', (event) => {
 
 // Default Animation
 const allElements = document.body.querySelectorAll(
-  ':not(body, html .versionWrapper *, div, audio, .noAnimDelay *, .sbSection *), .sbSection, .controlsBg'
+  ':not(body, html .versionWrapper *, div, audio, .noAnimDelay *, .sbSection *, .controlsBg *), .sbSection, .controlsBg'
 );
 const ANIMATION_DELAY = 0.1;
 
