@@ -377,7 +377,7 @@ document.addEventListener('keydown', (event) => {
 
 // Default Animation
 const allElements = document.body.querySelectorAll(
-  ':not(body, html .versionWrapper *, div, audio, .noAnimDelay *, .sbSection *), .sbSection'
+  ':not(body, html .versionWrapper *, div, audio, .noAnimDelay *, .sbSection *), .sbSection, .controlsBg'
 );
 const ANIMATION_DELAY = 0.1;
 

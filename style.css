@@ -1,5 +1,6 @@
 *:not(body, html, .versionWrapper *, audio, div, link, .devOptions *, .sbSection *),
-.sbSection {
+.sbSection,
+.controlsBg {
   animation-name: defaultAnim;
   animation-duration: 1.25s;
   animation-fill-mode: both;
@@ -15,6 +16,7 @@
 
 * {
   color: white;
+  user-select: none;
 }
 
 /* html,
@@ -25,6 +27,8 @@ body {
 html,
 body {
   background-color: #222;
+  margin: 0;
+  margin-bottom: 100px;
 }
 
 /* button {
@@ -46,18 +50,25 @@ button:not(:disabled):active {
 } */
 
 button.song {
-  background-color: #2e8e3d;
+  background-color: rgb(46, 142, 61);
+  box-shadow: 0 0 15px rgba(46, 142, 61, 25%);
   border: 1.9px solid #183b1de2;
 }
 
 button.sfx {
-  background-color: #2222cc;
+  background-color: rgb(34, 34, 204);
+  box-shadow: 0 0 15px rgba(34, 34, 204, 25%);
   border: 1.9px solid #3333ccd1;
 }
 
 button.red {
-  background-color: #cc2222;
+  background-color: rgb(204, 34, 34);
+  box-shadow: 0 0 15px rgba(204, 34, 34, 25%);
   border: 1.9px solid #cc4444d1;
+}
+
+button {
+  cursor: pointer;
 }
 
 .flashPlaying {
@@ -77,6 +88,12 @@ button.red {
   bottom: 0;
   text-align: center;
   user-select: none;
+  z-index: 999;
+  transition: opacity 0.2s linear;
+}
+
+.version:active {
+  opacity: 0.3;
 }
 
 .devOptions {
@@ -91,10 +108,10 @@ button.red {
   height: auto;
   width: 500px;
   transform: translate(-50%, -200%);
-  backdrop-filter: blur(7px);
+  backdrop-filter: blur(24px);
   background-color: #2e2e2e67;
   border-radius: 10px;
-  box-shadow: 0 0 15px rgb(0, 0, 0, 15%);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 15%);
   /* margin-left: 18%;
   margin-right: 18%; */
   /* margin-top: 35px; */
@@ -184,16 +201,20 @@ table {
   margin-top: 35px;
 }
 
-.soundboard .sbSection {
+.soundboard .sbSection,
+.controlsBg {
   display: inline-block;
   padding: 15px 45px;
-  border: 1.5px solid #56565633;
+  border: 1.5px solid #56565611;
   background-color: #2e2e2e67;
   border-radius: 10px;
+  box-shadow: 0 0 15px rgb(0, 0, 0, 15%);
+}
+
+.soundboard .sbSection {
   margin-left: 18%;
   margin-right: 18%;
   margin-top: 50px;
-  box-shadow: 0 0 15px rgb(0, 0, 0, 15%);
 }
 
 .soundboard .sbSection button {
@@ -214,17 +235,41 @@ table {
 }
 
 .stopAudio {
-  width: 25%;
-  margin-right: 10px;
+  width: 50%;
+  /* margin-right: 10px; */
 }
 
 .controls {
+  /* position: fixed; */
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
+  /* bottom: 0; */
+  /* height: 50px; */
   gap: 10px;
-  margin-top: 40px;
+  /* margin-top: 40px; */
+}
+
+.controlsBg {
+  z-index: 999;
+  position: fixed;
+  width: 50%;
+  left: 50%;
+  margin-bottom: 15px;
+  bottom: 0;
+  backdrop-filter: blur(24px);
+  transform: translateX(-50%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgb(255, 255, 255, 15%);
+}
+
+.fadeBottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 75px;
+  background: linear-gradient(to bottom, rgba(51, 51, 51, 0) 50%, rgba(51, 51, 51) 100%)
 }
 
 /* .lock,
