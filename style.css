@@ -6,23 +6,10 @@
   animation-fill-mode: both;
 }
 
-/* .devOptions:not(.hide) {
-  animation: slideDownAnimation 0.5s forwards ease;
-}
-
-.devOptions.hide {
-  animation: slideDownAnimationReversed 0.25s forwards ease;
-} */
-
 * {
   color: white;
   user-select: none;
 }
-
-/* html,
-body {
-  margin: 0;
-} */
 
 html,
 body {
@@ -31,23 +18,9 @@ body {
   margin-bottom: 100px;
 }
 
-/* button {
-  border: none;
-  padding: 12px 32px;
-  border-radius: 6px;
-  margin-left: 10px;
-  transition: 0.13s;
-  font-weight: 500;
-  font-size: 18px;
-} */
-
-/* button:not(:disabled, .versionBtn):hover {
-  opacity: 0.8;
+p {
+  margin: 0;
 }
-
-button:not(:disabled):active {
-  background-color: #00000000;
-} */
 
 button.song {
   background-color: rgb(46, 142, 61);
@@ -65,10 +38,6 @@ button.red {
   background-color: rgb(204, 34, 34);
   box-shadow: 0 0 15px rgba(204, 34, 34, 25%);
   border: 1.9px solid #cc4444d1;
-}
-
-button {
-  cursor: pointer;
 }
 
 .flashPlaying {
@@ -97,7 +66,6 @@ button {
 }
 
 .devOptions {
-  /* visibility: hidden; */
   display: block;
   position: fixed;
   opacity: 0;
@@ -112,9 +80,6 @@ button {
   background-color: #2e2e2e67;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 15%);
-  /* margin-left: 18%;
-  margin-right: 18%; */
-  /* margin-top: 35px; */
 }
 
 .devCloseIcon {
@@ -140,11 +105,6 @@ table {
 .devOptions h1 {
   text-align: center;
 }
-
-/* .devOptions div * {
-  display: inline;
-  margin-top: 5px;
-} */
 
 .devSpeedDrop {
   background-color: #333;
@@ -278,8 +238,8 @@ table {
 }
 
 .showControlsBtn {
-  background-color: transparent;
   border: none;
+  background-color: transparent;
   font-size: 18px;
 }
 
@@ -348,12 +308,13 @@ table {
   0% {
     transform: translate(-50%, -200%);
     opacity: 0;
-    visibility: hidden;
+    display: none;
   }
 
   30% {
     transform: translate(-50%, -30%);
     opacity: 1;
+    display: fixed;
   }
 
   100% {
@@ -366,12 +327,13 @@ table {
   0% {
     transform: translate(-50%, -50%);
     opacity: 1;
+    display: fixed;
   }
 
   100% {
     transform: translate(-50%, -200%);
     opacity: 0;
-    visibility: hidden;
+    display: none;
   }
 }
 
