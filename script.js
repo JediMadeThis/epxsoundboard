@@ -220,16 +220,17 @@ const showControlsBtn = document.getElementById('showControlsBtn');
 const controlsDiv = document.getElementById('controls');
 const controlsBg = document.getElementById('controlsBg');
 
+const controlsAnimationSpeed = '0.7s';
+
 minimizeBtn.addEventListener('click', () => {
-  controlsBg.style.animation = 'minimizeControlBg 0.85s ease-in-out forwards';
+  controlsBg.style.animation = `minimizeControlBg ${controlsAnimationSpeed} ease-in-out forwards`;
   controlsDiv.style.display = 'none';
 
   showControlsBtn.hidden = false;
 });
 
 showControlsBtn.addEventListener('click', () => {
-  controlsBg.style.animation =
-    'minimizeControlBgReversed 0.85s ease-in-out forwards';
+  controlsBg.style.animation = `minimizeControlBgReversed ${controlsAnimationSpeed} ease-in-out forwards`;
   controlsDiv.style.display = 'flex';
 
   showControlsBtn.hidden = true;
