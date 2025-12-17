@@ -1,4 +1,4 @@
-.fancyBtn {
+.fBtn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,28 +15,28 @@
   margin: 5px;
 }
 
-.fancyBtnContent {
+.fbc {
   width: fit-content;
   text-align: center;
   transition: transform 0.2s ease-in-out;
   pointer-events: none;
 }
 
-button.song.fancyBtn:active {
+button.song.fBtn:active {
   /* background-color: #55aa55bb; */
   opacity: 0.85;
 }
 
-button.sfx.fancyBtn:active {
+button.sfx.fBtn:active {
   /* background-color: #4444ccbb; */
   opacity: 0.85;
 }
 
-button.red.fancyBtn:active {
+button.red.fBtn:active {
   /* background-color: #cc4444bb; */
   opacity: 0.85;
 }
 
-.fancyBtn:active .fancyBtnContent {
+.fBtn:active .fbc {
   transform: scale(0.985);
 }

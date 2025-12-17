@@ -3,8 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Change to your own title -->
     <title>Moana Soundboard</title>
 
+    <!--
+
+      To add your own sounds, put the audio files
+      inside /sounds folder.:
+
+      <audio id="a[number]" src="./sounds/songpath"></audio>
+
+
+
+      For example:
+
+      <audio id="a1" src="./sounds/Cavern.mp3"</audio>
+
+
+      ! IMPORTANT !
+      Remember the audio number for the next step!
+
+
+      * I commented some of the audios because I don't use them anymore,
+      * but I kept them just in case.
+
+      * You can delete my code, the audio files in /sounds folder (if there is),
+      * and replace them with your own.
+
+      * The audio number doesn't have to go up by 1. It can be anything,
+      * as long as the audio number and button number matches!
+    
+    -->
     <audio
       id="a1"
       src="./sounds/In the Beginning Accompaniment - Visionary Musical Theatre.mp3"
@@ -24,7 +54,25 @@
     <audio id="a14" src="./sounds/I Am Moana.mp3"></audio>
     <audio id="a15" src="./sounds/We Know The Way (v2).mp3"></audio>
     <audio id="a16" src="./sounds/Shiny (v2).mp3"></audio>
-    <audio id="a17" src="./sounds/An Innocent Warrior (v2).m4a"></audio>
+    <audio id="a17" src="./sounds/An Innocent Warrior (v2).mp3"></audio>
+    <audio id="a18" src="./sounds/Tamatoa's Reveal Karaoke.mp3"></audio>
+    <audio id="a19" src="./sounds/Shiny (Playoff) Karaoke.mp3"></audio>
+    <audio id="a20" src="./sounds/Logo Te Pate.mp3"></audio>
+    <audio id="a21" src="./sounds/Logo Te Pate (Playoff) Karaoke.mp3"></audio>
+    <audio id="a22" src="./sounds/Warrior Face (Part 2) Karaoke.mp3"></audio>
+    <audio id="a23" src="./sounds/You'd Be a Hero Karaoke.mp3"></audio>
+    <audio id="a24" src="./sounds/Turn the Canoe Around Karaoke.mp3"></audio>
+    <audio id="a25" src="./sounds/It Chose Wrong Karaoke.mp3"></audio>
+    <audio id="a26" src="./sounds/Wayfinder Battle Karaoke.mp3"></audio>
+    <audio id="a27" src="./sounds/Know Who You Are.mp3"></audio>
+    <audio id="a28" src="./sounds/Te Fiti Restored Karaoke.mp3"></audio>
+    <audio id="a29" src="./sounds/We Know The Way (Finale).mp3"></audio>
+
+    <!--
+
+      
+    
+    -->
 
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./font.css" />
@@ -37,15 +85,86 @@
       <p id="version" class="version">Version: Loading...</p>
     </div>
 
+    <!-- Change to your own title -->
     <h1 class="title" id="title">Moana Soundboard</h1>
 
     <div class="soundboard">
+      <!--
+      
+        Here, to separate scenes, use:
+
+        <div class="sbSection"></div>
+
+
+
+        Now, put a title for the section:
+
+        <h2>[scene title]</h2>
+
+        Finally, add audio buttons (can have as many as you want):
+        <div>
+          <button id="s[number]" class="fBtn s[number] [song/sfx]">
+            <div class="fbc">[song title name]</div>
+          </button>
+        </div>
+
+
+
+        So, now you will have this combined code:
+
+        <div class="sbSection">
+          <h2>[scene title]</h2>
+
+          <div>
+            <button id="s[number]" class="fBtn s[number] song">
+              <div class="fbc">[song title name]</div>
+            </button>
+          </div>
+        </div>
+
+
+
+        You can add as many audio buttons as you like.
+        For example:
+
+        <div class="sbSection">
+          <h2>Intro</h2>
+
+          <div>    <------- PUT AUDIO BUTTONS INSIDE THIS <div>
+            <button id="s1" class="fBtn s1 song">
+              <div class="fbc">In the Beginning</div>
+            </button>
+
+            <button id="s2" class="fBtn s2 song">
+              <div class="fbc">An Innocent Warrior</div>
+            </button>
+
+            <button id="s3" class="fBtn s3 sfx">
+              <div class="fbc">Thunderstorm</div>
+            </button>
+          </div>
+        </div>
+
+
+
+        ! REMEMBER !
+        The numbers of <audio> tag and the buttons here must match.
+
+        For example, we have <audio id="s6" src="..."></audio>
+
+        So, for the button, it has to be <button id="s6" class="fBtn s6 ..."> ... </button>
+
+
+
+        * You can also look at my written code as an example below! *
+      -->
+
       <div class="sbSection">
         <h2>Intro</h2>
 
         <div>
-          <button id="s1" class="fancyBtn s1 song">
-            <div class="fancyBtnContent">In the Beginning</div>
+          <button id="s1" class="fBtn s1 song">
+            <div class="fbc">In the Beginning</div>
           </button>
         </div>
       </div>
@@ -54,8 +173,8 @@
         <h2>Scene 1</h2>
 
         <div>
-          <button id="s17" class="fancyBtn s17 song">
-            <div class="fancyBtnContent">An Innocent Warrior</div>
+          <button id="s17" class="fBtn s17 song">
+            <div class="fbc">An Innocent Warrior</div>
           </button>
         </div>
       </div>
@@ -64,8 +183,8 @@
         <h2>Scene 2</h2>
 
         <div>
-          <button id="s3" class="fancyBtn s3 song">
-            <div class="fancyBtnContent">Where You Are</div>
+          <button id="s3" class="fBtn s3 song">
+            <div class="fbc">Where You Are</div>
           </button>
         </div>
       </div>
@@ -74,32 +193,28 @@
         <h2>Scene 3</h2>
 
         <div>
-          <button id="s4" class="fancyBtn s4 song">
-            <div class="fancyBtnContent">He Was You</div>
+          <button id="s4" class="fBtn s4 song">
+            <div class="fbc">He Was You</div>
           </button>
 
-          <button id="s5" class="fancyBtn s5 song">
-            <div class="fancyBtnContent">How Far I'll Go</div>
+          <button id="s5" class="fBtn s5 song">
+            <div class="fbc">How Far I'll Go</div>
           </button>
 
-          <button id="s6" class="fancyBtn s6 song">
-            <div class="fancyBtnContent">Village Crazy Lady</div>
+          <button id="s6" class="fBtn s6 song">
+            <div class="fbc">Village Crazy Lady</div>
           </button>
 
-          <button id="s7" class="fancyBtn s7 song">
-            <div class="fancyBtnContent">Cavern</div>
+          <button id="s7" class="fBtn s7 song">
+            <div class="fbc">Cavern</div>
           </button>
 
-          <!-- <button id="s8" class="fancyBtn s8 song">
-            <div class="fancyBtnContent">We Know The Way</div>
-          </button> -->
-
-          <button id="s15" class="fancyBtn s8 song">
-            <div class="fancyBtnContent">We Know The Way</div>
+          <button id="s15" class="fBtn s8 song">
+            <div class="fbc">We Know The Way</div>
           </button>
 
-          <button id="s9" class="fancyBtn s9 song">
-            <div class="fancyBtnContent">The Ocean Chose You</div>
+          <button id="s9" class="fBtn s9 song">
+            <div class="fbc">The Ocean Chose You</div>
           </button>
         </div>
       </div>
@@ -108,12 +223,12 @@
         <h2>Scene 4</h2>
 
         <div>
-          <button id="s10" class="fancyBtn s10 song">
-            <div class="fancyBtnContent">Tala's Deathbed</div>
+          <button id="s10" class="fBtn s10 song">
+            <div class="fbc">Tala's Deathbed</div>
           </button>
 
-          <button id="s11" class="fancyBtn s11 song">
-            <div class="fancyBtnContent">How Far I'll Go (Reprise)</div>
+          <button id="s11" class="fBtn s11 song">
+            <div class="fbc">How Far I'll Go (Reprise)</div>
           </button>
         </div>
       </div>
@@ -122,8 +237,16 @@
         <h2>Scene 5</h2>
 
         <div>
-          <button id="s12" class="fancyBtn s12 song">
-            <div class="fancyBtnContent">You're Welcome</div>
+          <button id="s12" class="fBtn s12 song">
+            <div class="fbc">You're Welcome</div>
+          </button>
+
+          <button id="s23" class="fBtn s23 song">
+            <div class="fbc">You'd Be a Hero</div>
+          </button>
+
+          <button id="s22" class="fBtn s22 song">
+            <div class="fbc">Warrior Face (Pt. 2)</div>
           </button>
         </div>
       </div>
@@ -134,8 +257,32 @@
         <h2>Scene 6</h2>
 
         <div>
-          <button id="s13" class="fancyBtn s16 song">
-            <div class="fancyBtnContent">Shiny</div>
+          <button id="s18" class="fBtn s18 song">
+            <div class="fbc">Tamatoa's Reveal</div>
+          </button>
+
+          <button id="s16" class="fBtn s16 song">
+            <div class="fbc">Shiny</div>
+          </button>
+
+          <button id="s19" class="fBtn s19 song">
+            <div class="fbc">Shiny (Playoff)</div>
+          </button>
+        </div>
+      </div>
+
+      <br />
+
+      <div class="sbSection">
+        <h2>Scene 7</h2>
+
+        <div>
+          <button id="s20" class="fBtn s20 song">
+            <div class="fbc">Logo Te Pate</div>
+          </button>
+
+          <button id="s21" class="fBtn s21 song">
+            <div class="fbc">Logo Te Pate (Playoff)</div>
           </button>
         </div>
       </div>
@@ -146,18 +293,56 @@
         <h2>Scene 8</h2>
 
         <div>
-          <button id="s14" class="fancyBtn s14 song">
-            <div class="fancyBtnContent">I am Moana</div>
+          <button id="s24" class="fBtn s24 song">
+            <div class="fbc">Turn the Canoe Around</div>
+          </button>
+
+          <button id="s25" class="fBtn s25 song">
+            <div class="fbc">It Chose Wrong</div>
+          </button>
+
+          <button id="s14" class="fBtn s14 song">
+            <div class="fbc">I am Moana</div>
           </button>
         </div>
       </div>
 
       <br />
+
+      <div class="sbSection">
+        <h2>Scene 9</h2>
+
+        <div>
+          <button id="s26" class="fBtn s26 song">
+            <div class="fbc">Wayfinder Battle</div>
+          </button>
+
+          <button id="s27" class="fBtn s27 song">
+            <div class="fbc">Know Who You Are</div>
+          </button>
+
+          <button id="s28" class="fBtn s28 song">
+            <div class="fbc">Te Fiti Restored</div>
+          </button>
+        </div>
+      </div>
+
+      <br />
+
+      <div class="sbSection">
+        <h2>Outro</h2>
+
+        <div>
+          <button id="s29" class="fBtn s29 song">
+            <div class="fbc">We Know The Way (Finale)</div>
+          </button>
+        </div>
+      </div>
     </div>
 
     <div class="devOptions noAnimDelay hide" id="devOptions">
-      <button class="devCloseIcon fancyBtn" id="devCloseIcon">
-        <div class="fancyBtnContent">X</div>
+      <button class="devCloseIcon fBtn" id="devCloseIcon">
+        <div class="fbc">X</div>
       </button>
       <h1>Secret Settings</h1>
       <div class="devSpeed">
@@ -183,10 +368,10 @@
             <td>
               <button
                 id="devPreservePitch"
-                class="devPreservePitch fancyBtn off"
+                class="devPreservePitch fBtn off"
                 checked
               >
-                <div class="fancyBtnContent">Off</div>
+                <div class="fbc">Off</div>
               </button>
             </td>
           </tr>
@@ -200,12 +385,12 @@
       <p class="showControlsBtn" id="showControlsBtn" hidden>Show controls</p>
 
       <div class="controls" id="controls">
-        <button class="red stopAudio fancyBtn" id="stopAudio">
-          <div class="fancyBtnContent">Stop</div>
+        <button class="red stopAudio fBtn" id="stopAudio">
+          <div class="fbc">Stop</div>
         </button>
 
-        <button class="red lock fancyBtn" id="lock">
-          <div class="fancyBtnContent">Lock</div>
+        <button class="red lock fBtn" id="lock">
+          <div class="fbc">Lock</div>
         </button>
 
         <button class="minimizeBtn" id="minimizeBtn">X</button>
