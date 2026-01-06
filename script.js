@@ -220,7 +220,7 @@ const showControlsBtn = document.getElementById('showControlsBtn');
 const controlsDiv = document.getElementById('controls');
 const controlsBg = document.getElementById('controlsBg');
 
-const controlsAnimationSpeed = '0.7s';
+const controlsAnimationSpeed = '0.62s';
 
 minimizeBtn.addEventListener('click', () => {
   controlsBg.style.animation = `minimizeControlBg ${controlsAnimationSpeed} ease-in-out forwards`;

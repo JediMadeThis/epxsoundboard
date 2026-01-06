@@ -59,11 +59,12 @@ button.red {
   text-align: center;
   user-select: none;
   z-index: 999;
-  transition: opacity 0.2s linear;
+  transition: opacity 0.12s linear;
 }
 
 .version:active {
   opacity: 0.3;
+  transition-duration: 0s;
 }
 
 .devOptions {
