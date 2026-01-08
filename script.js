@@ -341,50 +341,9 @@ document.addEventListener('keydown', (event) => {
 // let increment = buttonPlayingOpacityIncrementsDecrements;
 // let max = 99;
 
-// setInterval(() => {
-//   Object.values(audiosIdS).forEach((audioId) => {
-//     const audio = document.getElementById(audioId);
-//     const btn = document.getElementById(audiosIdA[audioId]);
-
-//     try {
-//       if (audio.paused) {
-//         //! btn.textContent = audioNames[btn.getAttribute('id')];
-
-//         if (!btn) {
-//           // console.log('Cannot find button for ' + audio.id);
-//         }
-
-//         if (
-//           btn.classList.contains('sfx') &&
-//           btn.style.backgroundColor !== sfxBtnColor
-//         ) {
-//           btn.style.backgroundColor = sfxBtnColor;
-//         }
-
-//         if (
-//           btn.classList.contains('song') &&
-//           btn.style.backgroundColor !== songBtnColor
-//         ) {
-//           btn.style.backgroundColor = songBtnColor;
-//         }
-//       }
-
-//       if (!audio.paused) {
-//         if (btn.classList.contains('sfx')) {
-//           btn.style.backgroundColor = `${sfxBtnColor}${
-//             opacity < 10 ? '0' : ''
-//           }${opacity}`;
-//         }
-
-//         if (btn.classList.contains('song')) {
-//           btn.style.backgroundColor = `${songBtnColor}${
-//             opacity < 10 ? '0' : ''
-//           }${opacity}`;
-//         }
-//       }
-//     } catch (e) {}
-//   });
-// }, 50);
+setInterval(() => {
+  buttonFlash();
+}, 50);
 
 // function bounceNumber() {
 //   if (opacity <= max && opacity + increment > max) {
